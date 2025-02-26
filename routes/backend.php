@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +16,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 |
 */
 
-Route::get('dashboard/admin',[DashboardController::class,'index'])->middleware('auth:admin')
-->name('admin');
+
 
 //laravel
 
@@ -24,4 +24,17 @@ Route::get('dashboard/user', function () {
     return view('Dashboard.User.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard.user');
 
-require __DIR__.'/auth.php';
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){ 
+
+        Route::get('dashboard/admin',[DashboardController::class,'index'])->middleware('auth:admin')
+        ->name('admin');
+        
+        require __DIR__.'/auth.php';
+
+
+    });
+
