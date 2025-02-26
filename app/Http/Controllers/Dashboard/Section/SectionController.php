@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class SectionController extends Controller
 {
 
-    private $sectionRepository;
+    protected $sectionRepository;
 
     public function __construct(SectionRepositoryInterface $sectionRepository)
     {
@@ -38,6 +38,14 @@ class SectionController extends Controller
     public function store(Request $request)
     {
         //
+        $data = $request->validate([
+            'name' => 'required|string|max:225',
+        ]);
+
+        $section = $this->sectionRepository->store($data);
+
+        session()->flash('add');
+        return redirect()->route('section.index');
     }
 
     /**

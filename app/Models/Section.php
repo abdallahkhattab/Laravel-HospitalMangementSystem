@@ -11,6 +11,6 @@ use Astrotomic\Translatable\Translatable;
 class Section extends Model implements TranslatableContract
 {
     use HasFactory,Translatable;
-
+    protected $fillable = ['name'];
     public $translatedAttributes = ['name'];
 }
