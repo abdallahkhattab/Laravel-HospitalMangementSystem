@@ -4,7 +4,7 @@
             <div class="modal-content border-0 shadow-sm">
                 <div class="modal-header bg-danger text-white">
                     <h5 class="modal-title" id="deleteModalLabel{{ $section->id }}">
-                        <i class="las la-trash-alt mr-2"></i>Delete Section
+                        <i class="las la-trash-alt mr-2"></i>{{ __('Dashboard/sections_trans.delete_section') }}
                     </h5>
                     <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -18,11 +18,10 @@
                             <i class="las la-exclamation-triangle text-warning" style="font-size: 2.5rem;"></i>
                         </div>
                         <p class="text-center mb-4">
-                            Are you sure you want to delete the section "<strong>{{ $section->name }}</strong>"? 
-                            This action cannot be undone.
+                            {{ __('Dashboard/sections_trans.confirm_delete', ['name' => $section->name]) }}
                         </p>
                         <div class="form-group mb-0">
-                            <label class="font-weight-bold" for="section_name_{{ $section->id }}">Section Name</label>
+                            <label class="font-weight-bold" for="section_name_{{ $section->id }}">{{ __('Dashboard/sections_trans.section_name') }}</label>
                             <input type="text" 
                                    name="name" 
                                    id="section_name_{{ $section->id }}" 
@@ -33,10 +32,10 @@
                     </div>
                     <div class="modal-footer bg-light">
                         <button type="button" class="btn btn-secondary px-4" data-dismiss="modal">
-                            <i class="las la-times mr-1"></i>Cancel
+                            <i class="las la-times mr-1"></i>{{ __('Dashboard/sections_trans.cancel') }}
                         </button>
                         <button type="button" class="btn btn-danger px-4" data-toggle="modal" data-target="#confirmDelete{{ $section->id }}" data-dismiss="modal">
-                            <i class="las la-trash mr-1"></i>Delete
+                            <i class="las la-trash mr-1"></i>{{ __('Dashboard/sections_trans.delete') }}
                         </button>
                     </div>
                 </form>
@@ -50,7 +49,7 @@
             <div class="modal-content border-0 shadow-lg">
                 <div class="modal-header bg-gradient-danger text-white py-3">
                     <h6 class="modal-title font-weight-bold" id="confirmDeleteLabel{{ $section->id }}">
-                        <i class="las la-exclamation-circle mr-2"></i>Confirm Deletion
+                        <i class="las la-exclamation-circle mr-2"></i>{{ __('Dashboard/sections_trans.confirm_deletion') }}
                     </h6>
                     <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
@@ -61,47 +60,19 @@
                         <i class="las la-trash text-danger" style="font-size: 3rem;"></i>
                     </div>
                     <p class="mb-2">
-                        Delete "<strong>{{ $section->name }}</strong>" permanently?
+                        {{ __('Dashboard/sections_trans.delete_permanently', ['name' => $section->name]) }}
                     </p>
-                    <small class="text-muted">This action cannot be undone.</small>
+                    <small class="text-muted">{{ __('Dashboard/sections_trans.action_irreversible') }}</small>
                 </div>
                 <div class="modal-footer justify-content-center bg-light py-3">
                     <button type="button" class="btn btn-outline-secondary btn-sm px-4" data-dismiss="modal">
-                        <i class="las la-undo mr-1"></i>No, Keep It
+                        <i class="las la-undo mr-1"></i>{{ __('Dashboard/sections_trans.no_keep') }}
                     </button>
                     <button type="button" class="btn btn-danger btn-sm px-4" onclick="document.getElementById('deleteForm{{ $section->id }}').submit();">
-                        <i class="las la-check mr-1"></i>Yes, Delete
+                        <i class="las la-check mr-1"></i>{{ __('Dashboard/sections_trans.yes_delete') }}
                     </button>
                 </div>
             </div>
         </div>
     </div>
 @endforeach
-
-@section('css')
-    @parent
-    <style>
-        .bg-gradient-danger {
-            background: linear-gradient(45deg, #dc3545, #ff7588);
-        }
-        .modal-content {
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .modal-footer {
-            border-top: none;
-        }
-        .btn-sm {
-            font-size: 0.875rem;
-            transition: all 0.2s ease;
-        }
-        .btn-sm:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .modal-body small {
-            display: block;
-            margin-top: 5px;
-        }
-    </style>
-@endsection

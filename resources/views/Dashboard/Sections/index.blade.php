@@ -6,6 +6,8 @@
 <link href="{{URL::asset('Dashboard/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('Dashboard/plugins/datatable/css/responsive.dataTables.min.css')}}" rel="stylesheet">
 <link href="{{URL::asset('Dashboard/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
+<script src="{{URL::asset('Dashboard/plugins/notify/css/notifIt.css')}}"  rel="stylesheet"></script>
+
 
 @endsection
 @section('page-header')
@@ -45,7 +47,9 @@
 				</div>
 				<!-- breadcrumb -->
 @endsection
+
 @section('content')
+@flasher_render
 				<!-- row -->
 
 					<!-- Content -->
@@ -140,5 +144,9 @@
 <script src="{{URL::asset('Dashboard/plugins/datatable/js/responsive.bootstrap4.min.js')}}"></script>
 <!--Internal  Datatable js -->
 <script src="{{URL::asset('Dashboard/js/table-data.js')}}"></script>
+<script src="{{URL::asset('Dashboard/plugins/notify/js/notifIt.js')}}"></script>
+<script src="{{URL::asset('Dashboard/plugins/notify/js/notifit-custom.js')}}"></script>
+
+
 
 @endsection
