@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard\Section;
 
 use App\Http\Controllers\Controller;
 use App\interfaces\Sections\SectionRepositoryInterface;
+use App\Models\Section;
+use App\Repository\Sections\SectionRepository;
 use Illuminate\Http\Request;
 
 class SectionController extends Controller
@@ -42,7 +44,7 @@ class SectionController extends Controller
             'name' => 'required|string|max:225',
         ]);
 
-        $section = $this->sectionRepository->store($data);
+         $this->sectionRepository->store($data);
 
         session()->flash('add');
         return redirect()->route('section.index');
@@ -59,7 +61,7 @@ class SectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Section $section)
     {
         //
     }
@@ -67,16 +69,25 @@ class SectionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Section $section,SectionRepositoryInterface $sectionRepository)
     {
-        //
+       $data = $request->validate([
+            'name'=> 'sometimes|string',
+        ]);
+
+        $this->sectionRepository->update($section,$data);
+
+        return redirect()->route('section.index')->with('success', 'Section updated successfully!');
+
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Section $section,SectionRepositoryInterface $sectionRepository)
     {
-        //
+       $this->sectionRepository->destroy($section);
+       return redirect()->route('section.index')->with('success', 'Section deleted successfully!');
     }
 }

@@ -12,4 +12,8 @@ interface SectionRepositoryInterface
 
     // store index
     public function store(array $data):Section;
+
+    public function update(Section $section,array $data);
+
+    public function destroy(Section $section);
 }

@@ -3,14 +3,16 @@
 return [
     'pages' => 'Pages',
     'empty' => 'Empty',
-    'first_name' => 'First Name',
-    'last_name' => 'Last Name',
+    'section name' => 'Section Name',
+    'add_date' => 'Addition Date',
     'position' => 'Position',
     'start_date' => 'Start Date',
     'salary' => 'Salary',
-    'email' => 'E-mail',
-    'no_data_found' => 'No data found',
-    'launch_demo_modal' => 'add section',
+    'email' => 'Email',
+    'no_data_found' => 'No Data Found',
+    'add_section' => 'Add Section',
+    'actions' => 'Actions'
 ];
+
 
 

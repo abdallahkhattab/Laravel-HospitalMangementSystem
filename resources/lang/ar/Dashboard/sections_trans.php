@@ -3,14 +3,15 @@
 return [
     'pages' => 'الصفحات',
     'empty' => 'فارغ',
-    'first_name' => 'الاسم الأول',
-    'last_name' => 'الاسم الأخير',
+    'section name' => 'اسم القسم',
+    'add_date' => 'تاريخ الاضافه',
     'position' => 'المنصب',
     'start_date' => 'تاريخ البدء',
     'salary' => 'الراتب',
     'email' => 'البريد الإلكتروني',
     'no_data_found' => 'لا توجد بيانات',
-    'launch_demo_modal' => 'اضافه قسم',
+    'add_section' => 'اضافه قسم',
+    'actions' => 'العمليات'
 ];
 
 

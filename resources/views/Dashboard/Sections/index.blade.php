@@ -55,7 +55,7 @@
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add">
-                        {{ __('Dashboard/sections_trans.launch_demo_modal') }}
+                        {{ __('Dashboard/sections_trans.add_section') }}
                     </button>    
                 </div>                        
             </div>
@@ -64,23 +64,36 @@
                     <table class="table text-md-nowrap" id="example1">
                         <thead>
                             <tr>
-                                <th class="wd-15p border-bottom-0">{{ __('Dashboard/sections_trans.first_name') }}</th>
-                                <th class="wd-15p border-bottom-0">{{ __('Dashboard/sections_trans.last_name') }}</th>
-                                <th class="wd-20p border-bottom-0">{{ __('Dashboard/sections_trans.position') }}</th>
-                                <th class="wd-15p border-bottom-0">{{ __('Dashboard/sections_trans.start_date') }}</th>
-                                <th class="wd-10p border-bottom-0">{{ __('Dashboard/sections_trans.salary') }}</th>
-                                <th class="wd-25p border-bottom-0">{{ __('Dashboard/sections_trans.email') }}</th>
+                                <th class="wd-15p border-bottom-0">#</th>
+                                <th class="wd-15p border-bottom-0">{{ __('Dashboard/sections_trans.section name') }}</th>
+                                <th class="wd-20p border-bottom-0">{{ __('Dashboard/sections_trans.add_date') }}</th>
+                                <th class="wd-10p border-bottom-0">{{ __('Dashboard/sections_trans.actions') }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($sections as $section)
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>{{ $section->name }}</td>
                                     <td>{{ $section->created_at->diffForHumans()  }}</td>
-                                    <td>System Developer</td>
-                                    <td>2018/03/12</td>
-                                    <td>$654,765</td>
-                                    <td>b.Chloe@datatables.net</td>
+
+									<td>
+										<a class="modal-effect btn btn-sm btn-info" 
+										data-effect="effect-scale" 
+										data-toggle="modal" 
+										href="#edit{{ $section->id }}" 
+										data-target="#edit{{ $section->id }}">
+										 <i class="las la-pen"></i>
+									 </a>
+									 <a class="modal-effect btn btn-sm btn-danger" 
+										data-effect="effect-scale" 
+										data-toggle="modal" 
+										href="#delete{{$section->id}}" 
+										data-target="#delete{{$section->id}}">
+										 <i class="las la-trash"></i>
+									 </a>	
+									</td>
+                                  
                                 </tr>
                             @empty
                                 <tr>
@@ -96,10 +109,12 @@
         </div>
     </div>
 </div>
-				</div>
+</div>
 				@include('Dashboard.Sections.add')
+				@include('Dashboard.Sections.edit')
+				@include('Dashboard.Sections.delete')
 				<!-- row closed -->
-			</div>
+</div>
 			<!-- Container closed -->
 		
 		<!-- main-content closed -->
