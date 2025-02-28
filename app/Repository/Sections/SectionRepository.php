@@ -29,7 +29,7 @@ class SectionRepository implements SectionRepositoryInterface
     }
 
     public function destroy(Section $section){
-        $section->delete();
+       return $section->delete();
     }
 
 }

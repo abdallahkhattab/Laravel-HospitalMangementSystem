@@ -22,7 +22,7 @@ class SectionController extends Controller
  
     public function index()
     {
-        return $this->sectionRepository->index();
+         $this->sectionRepository->index();
     }
 
   

@@ -15,6 +15,7 @@ class Doctor extends Model implements TranslatableContract
     public $translatedAttributes = ['name','appointments'];
 
     protected $fillable = [
+    'section_id',
     'name',
     'email',
     'email_verified_at',
@@ -22,8 +23,11 @@ class Doctor extends Model implements TranslatableContract
     'phone',
     'price',
     'appointments',
-    'section_id'
+    ];
 
+    protected $casts = [
+        'status' => 'boolean',
+        'price' => 'decimal:2',
     ];
 
      /**
@@ -32,7 +36,11 @@ class Doctor extends Model implements TranslatableContract
     public function image():MorphOne{
 
     return $this->morphOne(Image::class, 'imageable');
-    
+
+    }
+
+    public function Section(){
+        return $this->belongsTo(Section::class);
     }
 
 }
