@@ -17,26 +17,19 @@ class SectionRepository implements SectionRepositoryInterface
 
     public function store(array $data):Section
     {
-
         
        return Section::create($data);
        
-       Flasher::addSuccess(__('Dashboard/messages.add_success'));
-       return redirect()->route('section.index');
-        
     }
 
     public function update(Section $section,array $data){
        return $section->update($data);
        
-       Flasher::addSuccess(__('Dashboard/messages.update_success'));
-       return redirect()->route('section.index');
+      
     }
 
     public function destroy(Section $section){
         $section->delete();
-        Flasher::addSuccess(__('Dashboard/messages.delete_success'));
-       return redirect()->route('section.index');
     }
 
 }

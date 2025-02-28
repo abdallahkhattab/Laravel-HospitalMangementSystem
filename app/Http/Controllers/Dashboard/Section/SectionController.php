@@ -32,6 +32,8 @@ class SectionController extends Controller
         $data = $request->validated();
 
         $this->sectionRepository->store($data);
+        Flasher::addSuccess(__('Dashboard/messages.add_success'));
+        return redirect()->route('section.index'); 
 
     }
 
@@ -42,11 +44,19 @@ class SectionController extends Controller
 
         $this->sectionRepository->update($section, $data);
 
+        Flasher::addSuccess(__('Dashboard/messages.update_success'));
+        return redirect()->route('section.index'); 
+
+
     }
 
     public function destroy(Section $section)
     {
         $this->sectionRepository->destroy($section);
+
+        Flasher::addSuccess(__('Dashboard/messages.delete_success'));
+        return redirect()->route('section.index'); 
+
 
     }
 }

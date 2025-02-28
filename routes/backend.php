@@ -1,10 +1,12 @@
 <?php
 
+use App\Models\Doctor;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\DashboardController;
-use App\Http\Controllers\Dashboard\Section\SectionController;
+use App\Http\Controllers\Dashboard\Doctor\DoctorController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Http\Controllers\Dashboard\Section\SectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,9 @@ Route::group(
             Route::get('admin', [DashboardController::class, 'index'])
                 ->name('admin');
           Route::resource('section',SectionController::class);
+          Route::resource('doctors',DoctorController::class);
+
+
         });
 
         require __DIR__ . '/auth.php';

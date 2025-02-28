@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             AdminSeeder::class,
         ]);
+
+        $this->call(DoctorSeeder::class);
     }
 }
