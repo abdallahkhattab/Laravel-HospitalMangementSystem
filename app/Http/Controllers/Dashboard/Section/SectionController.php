@@ -17,12 +17,12 @@ class SectionController extends Controller
 
     public function __construct(SectionRepositoryInterface $sectionRepository)
     {
-        $this->sectionRepository = $sectionRepository;
+         $this->sectionRepository = $sectionRepository;
     }
  
     public function index()
     {
-         $this->sectionRepository->index();
+        return $this->sectionRepository->index();
     }
 
   

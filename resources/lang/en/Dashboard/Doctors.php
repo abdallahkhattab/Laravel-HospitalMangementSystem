@@ -2,6 +2,8 @@
 
 return array (
   'Doctors'=>'Doctors',
+  'email'=>'Email',
+  'password' => 'password',
   'view_all' => 'view all',
   'title' => 'Doctors Management',
   'add_doctor' => 'Add Doctor',
@@ -17,6 +19,7 @@ return array (
   'actions' => 'Actions',
   'enabled' => 'Enabled',
   'disabled' => 'Disabled',
+  'image'=> 'image',
   'save' => 'Save',
   'cancel' => 'Cancel',
   'delete' => 'Delete',

@@ -22,12 +22,16 @@ class DoctorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'section_id' => 'required|exists:sections,id',
-            'email' => 'required|email|unique:doctors,email',
-            'password' => 'required|min:8',
-            'phone' => 'required|regex:/^[0-9+\-\s]*$/|min:10|max:15',
-            'status' => 'required|boolean',
-            'price' => 'required|numeric|min:0|max:999999.99',
+         //
+        'section_id' => 'required|exists:sections,id',
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:doctors,email',
+        'password' => 'required',
+        'phone' => 'nullable',
+        'price' => 'required',
+        'status' => 'required|boolean',
+        'appointments' => 'nullable|array', // Updated for array/JSON
+        'appointments.*' => 'string', // Validate each appointment
         ];
     }
 }

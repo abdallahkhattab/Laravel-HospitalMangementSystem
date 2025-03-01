@@ -3,39 +3,47 @@
 namespace App\Http\Controllers\Dashboard\Doctor;
 
 use App\Models\Doctor;
+use App\Models\Section;
 use Illuminate\Http\Request;
 use Flasher\Laravel\Facade\Flasher;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DoctorRequest;
+use Illuminate\Support\Facades\Hash;
 use App\interfaces\Doctors\DoctorRepositoryInterface;
+use App\Traits\UploadTrait;
 
 class DoctorController extends Controller
 {
+    use UploadTrait;
     /**
      * Display a listing of the resource.
      */
 
-    protected $doctorRepositroy;
+    protected $doctorRepository;
 
-    public function __construct(DoctorRepositoryInterface $doctorRepositroy)
+    public function __construct(DoctorRepositoryInterface $doctorRepository)
     {
-        $this->doctorRepositroy = $doctorRepositroy;
+        $this->doctorRepository = $doctorRepository;
         
     }
 
 
     public function index()
     {
-    
-         $this->doctorRepositroy->index();
+
+      $doctors = $this->doctorRepository->index();
+      return view('dashboard.doctors.index', compact('doctors'));
+
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Doctor $doctor)
+    public function create()
     {
-        return view('Dashboard.Doctors.add',compact('doctor'));
+       $sections = $this->doctorRepository->create();
+       return view('Dashboard.Doctors.add', compact('sections'));
+       
     }
 
     /**
@@ -43,12 +51,14 @@ class DoctorController extends Controller
      */
     public function store(DoctorRequest $request)
     {
-        $data = $request->validated();
-
-         $this->doctorRepositroy->store($data);
-        Flasher::addSuccess(__('Dashboard/messages.add_success'));
-        return redirect()->route('doctors.index'); 
-        
+        try {
+            $doctor = $this->doctorRepository->store($request);
+            Flasher::addSuccess(__('dashboard/messages.add_success'));
+            return redirect()->route('doctors.index');
+        } catch (\Exception $e) {
+            Flasher::addError($e->getMessage());
+            return redirect()->back()->withInput();
+        }
     }
 
     /**

@@ -15,19 +15,12 @@ class Doctor extends Model implements TranslatableContract
     public $translatedAttributes = ['name','appointments'];
 
     protected $fillable = [
-    'section_id',
-    'name',
-    'email',
-    'email_verified_at',
-    'password',
-    'phone',
-    'price',
-    'appointments',
-    ];
-
-    protected $casts = [
-        'status' => 'boolean',
-        'price' => 'decimal:2',
+        'section_id',
+        'email',
+        'password',
+        'phone',
+        'status',
+        'price',
     ];
 
      /**
@@ -39,7 +32,7 @@ class Doctor extends Model implements TranslatableContract
 
     }
 
-    public function Section(){
+    public function section(){
         return $this->belongsTo(Section::class);
     }
 

@@ -2,6 +2,8 @@
 
 return array (
   'Doctors' => 'الاطباء',
+  'email'=>'ايميل',
+  'password' => 'كلمه السر',
   'view_all'=> 'عرض الكل',
   'title' => 'إدارة الأطباء',
   'add_doctor' => 'إضافة طبيب',
@@ -12,6 +14,7 @@ return array (
   'phone' => 'الهاتف',
   'appointments' => 'المواعيد',
   'price' => 'السعر',
+  'image'=> 'الصوره',
   'status' => 'الحالة',
   'created_at' => 'تاريخ الإنشاء',
   'actions' => 'الإجراءات',

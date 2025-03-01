@@ -7,8 +7,6 @@ use App\Models\Doctor;
 interface DoctorRepositoryInterface
 {
     public function index();
-
-
-    public function store(array $data):Doctor;
-    
+    public function create();
+    public function store(DoctorRequest $request);
 }
