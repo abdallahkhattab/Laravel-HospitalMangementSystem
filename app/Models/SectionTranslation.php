@@ -9,6 +9,6 @@ class SectionTranslation extends Model
 {
     use HasFactory;
     public $table = 'sections_translations';
-    protected $fillable = ['name'];
+    protected $fillable = ['name','description'];
     public $timestamps = false;
 }

@@ -24,6 +24,7 @@ class SectionRequest extends FormRequest
         return [
         
          'name'=> 'required|string',
+         'description'=>'string',
     
         ];
     }

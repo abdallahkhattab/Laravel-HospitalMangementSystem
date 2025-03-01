@@ -75,15 +75,20 @@ class DoctorController extends Controller
     public function edit(Doctor $doctor)
     {
         //
-        return view('Dashboard.Doctors.edit',compact('doctor'));
+        $sections =$this->doctorRepository->edit();
+        return view('Dashboard.Doctors.edit',compact('doctor','sections'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(DoctorRequest $request)
     {
         //
+        $this->doctorRepository->update($request);
+        Flasher::addSuccess(__('dashboard/messages.add_success'));
+        return redirect()->route('doctors.index');
+
     }
 
     /**

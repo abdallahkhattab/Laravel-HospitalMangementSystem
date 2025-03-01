@@ -5,7 +5,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel{{ $section->id }}">Edit Section</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <form action="{{ route('section.update', $section->id) }}" method="POST">
@@ -21,6 +21,17 @@
                                    placeholder="Enter Section Name" 
                                    value="{{ $section->name }}">
                             @error('name')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="description{{ $section->id }}">Description</label>
+                            <textarea name="description" 
+                                      id="description{{ $section->id }}" 
+                                      class="form-control" 
+                                      placeholder="Enter Section Description" 
+                                      rows="3">{{ $section->description }}</textarea>
+                            @error('description')
                                 <span class="text-danger">{{ $message }}</span>
                             @enderror
                         </div>

@@ -9,4 +9,6 @@ interface DoctorRepositoryInterface
     public function index();
     public function create();
     public function store(DoctorRequest $request);
+    public function edit();
+    public function update(DoctorRequest $request);
 }

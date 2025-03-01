@@ -69,7 +69,9 @@
                         <thead>
                             <tr>
                                 <th class="wd-15p border-bottom-0">#</th>
-                                <th class="wd-15p border-bottom-0">{{ __('Dashboard/sections_trans.section name') }}</th>
+                                <th class="wd-15p border-bottom-0">{{ __('Dashboard/sections_trans.section_name') }}</th>
+								<th class="wd-15p border-bottom-0">{{ __('Dashboard/sections_trans.section_description') }}</th>
+
                                 <th class="wd-20p border-bottom-0">{{ __('Dashboard/sections_trans.add_date') }}</th>
                                 <th class="wd-10p border-bottom-0">{{ __('Dashboard/sections_trans.actions') }}</th>
                             </tr>
@@ -79,6 +81,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $section->name }}</td>
+									<td>{{ $section->description }}</td>
                                     <td>{{ $section->created_at->diffForHumans()  }}</td>
 
 									<td>

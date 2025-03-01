@@ -43,7 +43,7 @@ class DoctorRepository implements DoctorRepositoryInterface
                     $request,
                     'photo',
                     'doctors',
-                    'upload_image',
+                    'public',
                     $doctor->id,
                     Doctor::class
                 );
@@ -55,5 +55,15 @@ class DoctorRepository implements DoctorRepositoryInterface
             DB::rollBack();
             throw new \Exception('Failed to create doctor: ' . $e->getMessage());
         }
+    }
+
+    public function edit(){
+     return Section::all();
+    }
+
+    public function update(DoctorRequest $request)
+    {
+      
+
     }
 }

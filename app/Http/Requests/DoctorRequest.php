@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DoctorRequest extends FormRequest
@@ -21,17 +22,32 @@ class DoctorRequest extends FormRequest
      */
     public function rules(): array
     {
+
+       // Get the doctor ID from the route (e.g., /doctors/{doctor})
+       $doctorId = $this->route('doctor') ? $this->route('doctor')->id ?? $this->route('doctor') : null;
+
+       return [
+           'section_id' => 'required|exists:sections,id',
+           'name' => 'sometimes|string|max:255',
+           'email' => [
+               'sometimes',
+               'email',
+               Rule::unique('doctors')->ignore($doctorId), // Ignore current doctor's ID
+           ],
+           'password' => 'nullable|string|min:8', // Optional, but enforce min length if provided
+           'phone' => 'nullable|string',
+           'price' => 'sometimes|numeric|min:0',
+           'status' => 'sometimes|boolean',
+           'appointments' => 'nullable|array',
+           'appointments.*' => 'string',
+       ];
+    
+    }
+
+    public function messages(): array
+    {
         return [
-         //
-        'section_id' => 'required|exists:sections,id',
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:doctors,email',
-        'password' => 'required',
-        'phone' => 'nullable',
-        'price' => 'required',
-        'status' => 'required|boolean',
-        'appointments' => 'nullable|array', // Updated for array/JSON
-        'appointments.*' => 'string', // Validate each appointment
+            'email.unique' => 'This email is already taken by another doctor.',
         ];
     }
 }
