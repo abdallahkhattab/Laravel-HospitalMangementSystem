@@ -65,24 +65,8 @@
                                 </div>
                             </div>
 
-                            <!-- Password Field -->
-                            <div class="row row-xs align-items-center mg-b-20">
-                                <div class="col-md-1">
-                                    <label for="password">{{ trans('Dashboard/doctors.password') }}</label>
-                                </div>
-                                <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                    <input class="form-control @error('password') is-invalid @enderror" 
-                                           name="password" 
-                                           id="password" 
-                                           type="password" 
-                                           placeholder="Leave blank to keep current password">
-                                    @error('password')
-                                        <span class="invalid-feedback">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
 
-                            <!-- Phone Field -->
+                            <!-- Phone Field  -->
                             <div class="row row-xs align-items-center mg-b-20">
                                 <div class="col-md-1">
                                     <label for="phone">{{ trans('Dashboard/Doctors.phone') }}</label>
@@ -98,6 +82,7 @@
                                     @enderror
                                 </div>
                             </div>
+                            
 
                             <!-- Section Field -->
                             <div class="row row-xs align-items-center mg-b-20">
@@ -177,7 +162,7 @@
     </div>
     <div class="col-md-11 mg-t-5 mg-md-t-0">
         <img id="imagePreview" 
-             src="{{ $doctor->image ? asset('storage/Doctors/' . $doctor->image->filename) : 'default-image.jpg' }}" 
+             src="{{ asset('storage/doctors/' . ($doctor->image->filename ??'no_image.jpg'))  }}" 
              style="border-radius:50%; margin-bottom:10px;" 
              width="150px" 
              height="150px" 

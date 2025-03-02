@@ -20,34 +20,24 @@ class DoctorRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
-
-       // Get the doctor ID from the route (e.g., /doctors/{doctor})
-       $doctorId = $this->route('doctor') ? $this->route('doctor')->id ?? $this->route('doctor') : null;
-
-       return [
-           'section_id' => 'required|exists:sections,id',
-           'name' => 'sometimes|string|max:255',
-           'email' => [
-               'sometimes',
-               'email',
-               Rule::unique('doctors')->ignore($doctorId), // Ignore current doctor's ID
-           ],
-           'password' => 'nullable|string|min:8', // Optional, but enforce min length if provided
-           'phone' => 'nullable|string',
-           'price' => 'sometimes|numeric|min:0',
-           'status' => 'sometimes|boolean',
-           'appointments' => 'nullable|array',
-           'appointments.*' => 'string',
-       ];
+        $doctorId = $this->route('doctor'); // Get the doctor ID from route model binding
     
-    }
-
-    public function messages(): array
-    {
         return [
-            'email.unique' => 'This email is already taken by another doctor.',
+            'section_id' => 'required|exists:sections,id',
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('doctors', 'email')->ignore($doctorId),
+            ],
+            'password' => 'sometimes|nullable|string|min:6', // Adjusted for update scenario
+            'phone' => 'nullable',
+            'price' => 'required',
+            'status' => 'required|boolean',
+            'appointments' => 'nullable|array',
+            'appointments.*' => 'string',
         ];
     }
 }

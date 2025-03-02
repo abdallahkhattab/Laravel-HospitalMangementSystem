@@ -82,10 +82,10 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(DoctorRequest $request)
+    public function update(DoctorRequest $request,Doctor $doctor)
     {
         //
-        $this->doctorRepository->update($request);
+        $this->doctorRepository->update($request,$doctor);
         Flasher::addSuccess(__('dashboard/messages.add_success'));
         return redirect()->route('doctors.index');
 
@@ -94,8 +94,11 @@ class DoctorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Doctor $doctor)
     {
         //
+       $doctor = $this->doctorRepository->destroy($doctor);
+       Flasher::addSuccess(__('Dashboard/messages.delete_success'));
+       return redirect()->route('doctors.index');
     }
 }

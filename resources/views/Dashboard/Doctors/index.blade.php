@@ -43,6 +43,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
+								<th>{{trans('Dashboard/Doctors.image')}}</th>
                                 <th >{{trans('Dashboard/Doctors.name')}}</th>
                                 <th >{{trans('Dashboard/Doctors.email')}}</th>
                                 <th>{{trans('Dashboard/Doctors.section')}}</th>
@@ -58,6 +59,9 @@
                           @foreach($doctors as $doctor)
                               <tr>
                                   <td>{{ $loop->iteration }}</td>
+								  
+								  <td><img src="{{asset('storage/doctors/'.($doctor->image->filename ?? 'no_image.jpg'))}}" width="50
+									" height="50" alt="image"></td>
                                   <td>{{ $doctor->name }}</td>
                                   <td>{{ $doctor->email }}</td>
                                   <td>{{ $doctor->section->name}}</td>
@@ -72,7 +76,7 @@
                                   <td>{{ $doctor->created_at->diffForHumans() }}</td>
                                   <td>
                                       <a class="modal-effect btn btn-sm btn-info" href="{{route('doctors.edit',$doctor)}}"><i class="las la-pen"></i></a>
-                                      <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"  data-toggle="modal" href="#delete{{$doctor->id}}"><i class="las la-trash"></i></a>
+                                      <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"  data-toggle="modal" href="#delete{{$doctor->id}} "data-target="#delete{{$doctor->id}}"><i class="las la-trash"></i></a>
                                   </td>
                               </tr>
                               @include('Dashboard.Doctors.delete')

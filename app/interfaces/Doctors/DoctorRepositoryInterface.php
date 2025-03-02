@@ -10,5 +10,6 @@ interface DoctorRepositoryInterface
     public function create();
     public function store(DoctorRequest $request);
     public function edit();
-    public function update(DoctorRequest $request);
+    public function update($request ,$doctor);
+    public function destroy($doctor);
 }
