@@ -12,4 +12,6 @@ interface DoctorRepositoryInterface
     public function edit();
     public function update($request ,$doctor);
     public function destroy($doctor);
+    public function filterBySection($sectionId);
+    
 }

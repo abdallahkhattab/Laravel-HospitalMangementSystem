@@ -15,6 +15,7 @@ class Section extends Model implements TranslatableContract
     public $translatedAttributes = ['name','description'];
 
     public function doctors(){
+        
         return $this->hasMany(Doctor::class);
     }
     

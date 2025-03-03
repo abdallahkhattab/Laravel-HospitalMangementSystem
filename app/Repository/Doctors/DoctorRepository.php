@@ -76,7 +76,7 @@ class DoctorRepository implements DoctorRepositoryInterface
 
     public function edit(){
     return Appointment::all();
-    
+
     }
 
     public function update($request,$doctor)
@@ -136,12 +136,40 @@ class DoctorRepository implements DoctorRepositoryInterface
     }
 
     public function destroy($doctor){
-        return $doctor->delete();
-        if($doctor->image){
-            Storage::disk('public')->delete('doctors/'.$doctor->image->filename);
-            $doctor->image()->delete();
-        }
+
+    $doctor->appointments()->detach();
+
+    // Delete the doctor's image if it exists
+    if ($doctor->image) {
+        Storage::disk('public')->delete('doctors/' . $doctor->image->filename);
+        $doctor->image()->delete();
     }
+
+    // Delete the doctor
+    return $doctor->delete();
+
+}
+
+public function filterBySection($sectionId)
+{
+    /*
+    return Doctor::where('section_id', $sectionId)
+        ->with('appointments', 'image')
+        ->get()
+        ->map(function ($doctor) {
+            $doctor->appointment_days = $doctor->appointments->pluck('name')->implode(', ');
+            return $doctor;
+    });*/
+    
+    return Section::with(['doctors.appointments', 'doctors.image'])
+    ->findOrFail($sectionId) // Get the section or fail if not found
+    ->doctors
+    ->map(function ($doctor) {
+        $doctor->appointment_days = $doctor->appointments->pluck('name')->implode(', ');
+        return $doctor;
+    });
+}
+
 
  
 }

@@ -37,7 +37,7 @@ Route::group(
                 ->name('admin');
           Route::resource('section',SectionController::class);
           Route::resource('doctors',DoctorController::class);
-
+          Route::get('doctors/section/{id}', [DoctorController::class, 'filterBySection'])->name('doctors.bySection');
 
         });
 

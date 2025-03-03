@@ -107,4 +107,11 @@ class DoctorController extends Controller
        Flasher::addSuccess(__('Dashboard/messages.delete_success'));
        return redirect()->route('doctors.index');
     }
+
+    public function filterBySection($sectionId)
+{
+    $doctors = $this->doctorRepository->filterBySection($sectionId);
+    return view('Dashboard.Doctors.index', compact('doctors'));
+}
+
 }

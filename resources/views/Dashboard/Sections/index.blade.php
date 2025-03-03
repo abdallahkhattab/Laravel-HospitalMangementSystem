@@ -80,8 +80,11 @@
                             @forelse ($sections as $section)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $section->name }}</td>
-									<td>{{ $section->description }}</td>
+									<td>
+										<a href="{{ route('doctors.bySection', $section->id) }}">{{ $section->name }}</a>
+									</td>
+																		
+									<td>{{ $section->description ??'no description found' }}</td>
                                     <td>{{ $section->created_at->diffForHumans()  }}</td>
 
 									<td>
