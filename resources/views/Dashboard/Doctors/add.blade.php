@@ -132,18 +132,10 @@
                                 name="appointments[]" 
                                 id="appointments">
                             <option value="" disabled>{{ trans('Dashboard/Doctors.select_appointments') }}</option>
-                            @php 
-                                $days = ['السبت', 'الأحد', 'الأثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'];
-                                $currentAppointments = isset($doctor) 
-                                    ? explode(',', $doctor->translateOrNew(app()->getLocale())->appointments ?? '') 
-                                    : old('appointments', []);
-                                $currentAppointments = array_filter($currentAppointments); // Remove empty values
-                            @endphp
-                            @foreach($days as $day)
-                                <option value="{{ $day }}"
-                                        {{ in_array($day, $currentAppointments) ? 'selected' : '' }}>
-                                    {{ $day }}
-                                </option>
+                            @foreach ($appointments as $appointment )
+
+                            <option value="{{ $appointment->id }}">{{ $appointment->name }}</option>
+     
                             @endforeach
                         </select>
                         @error('appointments')

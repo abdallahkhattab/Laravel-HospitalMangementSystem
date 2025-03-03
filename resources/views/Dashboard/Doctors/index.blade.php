@@ -66,7 +66,14 @@
                                   <td>{{ $doctor->email }}</td>
                                   <td>{{ $doctor->section->name}}</td>
                                   <td>{{ $doctor->phone}}</td>
-                                  <td>{{ $doctor->appointments}}</td>
+								  <td>
+									@if($doctor->appointments->isNotEmpty())
+										{{ $doctor->appointment_days}}
+									@else
+										{{ trans('Dashboard/Doctors.no_appointments') }}
+									@endif
+								</td>
+								
                                   <td>{{ $doctor->price}}</td>
                                   <td>
                                       <div class="dot-label bg-{{$doctor->status == 1 ? 'success':'danger'}} ml-1"></div>

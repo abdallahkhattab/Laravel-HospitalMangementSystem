@@ -113,23 +113,15 @@
                                     <label for="appointments">{{ trans('Dashboard/Doctors.appointments') }}</label>
                                 </div>
                                 <div class="col-md-11 mg-t-5 mg-md-t-0">
-                                    <select multiple="multiple" 
-                                            class="testselect2 @error('appointments') is-invalid @enderror" 
-                                            name="appointments[]" 
-                                            id="appointments">
-                                        <option value="" disabled>{{ trans('Dashboard/Doctors.select_appointments') }}</option>
-                                        @php 
-                                            $days = ['السبت', 'الأحد', 'الأثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة'];
-                                            $currentAppointments = old('appointments', explode(',', $doctor->translateOrNew(app()->getLocale())->appointments ?? ''));
-                                            $currentAppointments = array_filter($currentAppointments);
-                                        @endphp
-                                        @foreach($days as $day)
-                                            <option value="{{ $day }}"
-                                                    {{ in_array($day, $currentAppointments) ? 'selected' : '' }}>
-                                                {{ $day }}
+                                    <select multiple class="testselect2 @error('appointments') is-invalid @enderror" name="appointments[]">
+                                        @foreach ($appointments as $appointment)
+                                            <option value="{{ $appointment->id }}" 
+                                                @selected($doctor->appointments->contains($appointment->id))>
+                                                {{ $appointment->name }}
                                             </option>
                                         @endforeach
                                     </select>
+                                    
                                     @error('appointments')
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror

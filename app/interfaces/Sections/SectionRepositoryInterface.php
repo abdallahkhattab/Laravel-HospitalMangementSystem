@@ -16,4 +16,6 @@ interface SectionRepositoryInterface
     public function update(Section $section,array $data);
 
     public function destroy(Section $section);
+
+    public function getAllSections();
 }

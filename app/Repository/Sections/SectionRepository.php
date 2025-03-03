@@ -32,4 +32,8 @@ class SectionRepository implements SectionRepositoryInterface
        return $section->delete();
     }
 
+    public function getAllSections(){
+        return Section::all();
+    }
+
 }

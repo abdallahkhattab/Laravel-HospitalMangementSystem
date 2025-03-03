@@ -10,6 +10,7 @@ use App\Http\Requests\DoctorRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\interfaces\Doctors\DoctorRepositoryInterface;
+use App\Models\Appointment;
 use App\Models\Image;
 
 class DoctorRepository implements DoctorRepositoryInterface
@@ -18,12 +19,19 @@ class DoctorRepository implements DoctorRepositoryInterface
 
     public function index()
     {
-        return Doctor::all();
+        return Doctor::with(['appointments', 'section', 'image'])
+        ->get()
+        ->map(function ($doctor) {
+            $doctor->appointment_days = $doctor->appointments->pluck('name')->implode(',');
+            return $doctor;
+        });
+
     }
 
     public function create()
     {
-        return Section::all();
+        return Appointment::all();
+
     }
 
     public function store(DoctorRequest $request)
@@ -36,9 +44,13 @@ class DoctorRepository implements DoctorRepositoryInterface
             $doctor = new Doctor();
             $doctor->fill($data);
             $doctor->password = Hash::make($data['password']);
-            $doctor->appointments = isset($data['appointments']) ? implode(',', $data['appointments']) : '';
-            $doctor->save();
-
+            $doctor->save(); // Save before syncing relationships
+    
+            // Sync appointments (ensure many-to-many relationship works)
+            if (isset($data['appointments']) && is_array($data['appointments'])) {
+                $doctor->appointments()->sync($data['appointments']);
+            }
+    
             // Upload image (if exists)
             if ($request->hasFile('photo')) {
                 $this->verifyAndStoreImage(
@@ -50,7 +62,7 @@ class DoctorRepository implements DoctorRepositoryInterface
                     Doctor::class
                 );
             }
-
+    
             DB::commit();
             return $doctor;
         } catch (\Exception $e) {
@@ -58,11 +70,13 @@ class DoctorRepository implements DoctorRepositoryInterface
             throw new \Exception('Failed to create doctor: ' . $e->getMessage());
         }
     }
+    
 
 
 
     public function edit(){
-     return Section::all();
+    return Appointment::all();
+    
     }
 
     public function update($request,$doctor)
@@ -81,8 +95,8 @@ class DoctorRepository implements DoctorRepositoryInterface
             }
     
             // Update appointments if provided
-            if (isset($data['appointments'])) {
-                $data['appointments'] = implode(',', (array) $data['appointments']);
+            if(isset($data['appointments']) && is_array($data['appointments'])){
+                $doctor->appointments()->sync($data['appointments']);
             }
     
             // Update the doctor record

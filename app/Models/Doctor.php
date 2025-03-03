@@ -12,7 +12,7 @@ use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 class Doctor extends Model implements TranslatableContract
 {
     use HasFactory,Translatable;
-    public $translatedAttributes = ['name','appointments'];
+    public $translatedAttributes = ['name'];
 
     protected $fillable = [
         'section_id',
@@ -22,6 +22,11 @@ class Doctor extends Model implements TranslatableContract
         'status',
         'price',
     ];
+
+
+    public function appointments(){
+        return $this->belongsToMany(Appointment::class, 'appointment_doctor', 'doctor_id', 'appointment_id');
+        }
 
      /**
      * Get the doctor's image.

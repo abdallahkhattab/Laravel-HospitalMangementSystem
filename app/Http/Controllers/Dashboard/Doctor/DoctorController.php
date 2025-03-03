@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DoctorRequest;
 use Illuminate\Support\Facades\Hash;
 use App\interfaces\Doctors\DoctorRepositoryInterface;
+use App\interfaces\Sections\SectionRepositoryInterface;
 use App\Traits\UploadTrait;
 
 class DoctorController extends Controller
@@ -20,10 +21,13 @@ class DoctorController extends Controller
      */
 
     protected $doctorRepository;
+    protected $sectionRepository;
 
-    public function __construct(DoctorRepositoryInterface $doctorRepository)
+
+    public function __construct(DoctorRepositoryInterface $doctorRepository,SectionRepositoryInterface  $sectionRepository)
     {
         $this->doctorRepository = $doctorRepository;
+        $this->sectionRepository = $sectionRepository;
         
     }
 
@@ -41,8 +45,9 @@ class DoctorController extends Controller
      */
     public function create()
     {
-       $sections = $this->doctorRepository->create();
-       return view('Dashboard.Doctors.add', compact('sections'));
+       $sections = $this->sectionRepository->getAllSections();
+       $appointments = $this->doctorRepository->create();
+       return view('Dashboard.Doctors.add', compact('sections','appointments'));
        
     }
 
@@ -75,8 +80,9 @@ class DoctorController extends Controller
     public function edit(Doctor $doctor)
     {
         //
-        $sections =$this->doctorRepository->edit();
-        return view('Dashboard.Doctors.edit',compact('doctor','sections'));
+        $sections =$this->sectionRepository->getAllSections();
+        $appointments = $this->doctorRepository->edit();
+        return view('Dashboard.Doctors.edit',compact('doctor','sections','appointments'));
     }
 
     /**
