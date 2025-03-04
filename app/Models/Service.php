@@ -15,4 +15,8 @@ class Service extends Model implements TranslatableContract
     protected $translatedAttributes = ['name'];
     protected $fillable = ['price','description','status'];
 
+    public function groups(){
+    return $this->belongsToMany(Group::class);
+    }
+
 }

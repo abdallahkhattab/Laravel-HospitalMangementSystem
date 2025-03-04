@@ -64,7 +64,7 @@
                                     <td>
                                         <div
                                             class="dot-label bg-{{$service->status == 1 ? 'success':'danger'}} ml-1"></div>
-                                        {{$service->status == 1 ? trans('doctors.Enabled'):trans('doctors.Not_enabled')}}
+                                        {{$service->status == 1 ? trans('Dashboard/Services.Enabled'):trans('Dashboard/Services.Not_enabled')}}
                                     </td>
                                     <td> {{ Str::limit($service->description, 50) }}</td>
                                     <td>{{ $service->created_at->diffForHumans() }}</td>
