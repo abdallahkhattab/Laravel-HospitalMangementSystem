@@ -7,6 +7,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Doctor\DoctorController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Dashboard\Section\SectionController;
+use App\Http\Controllers\Dashboard\Service\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,7 @@ Route::group(
           Route::resource('section',SectionController::class);
           Route::resource('doctors',DoctorController::class);
           Route::get('doctors/section/{id}', [DoctorController::class, 'filterBySection'])->name('doctors.bySection');
+          Route::resource('services',ServiceController::class);
 
         });
 
