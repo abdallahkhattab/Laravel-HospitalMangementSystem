@@ -18,4 +18,5 @@ return array (
 'submit'=> 'حفظ',
 'delete_Service'=>'حذف الخدمه',
 'warning'=> 'هل انت متأكد من حذف',
+'add_service_group'=>'اضافه مجموعه خدمات',
 );

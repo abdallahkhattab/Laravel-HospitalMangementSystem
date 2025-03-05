@@ -22,10 +22,9 @@ class Group extends Model implements TranslatableContract
     Total_with_tax'
 ];
    
-public function services()
+public function service_group()
 {
     return $this->belongsToMany(Service::class);
 }
-
 
 }

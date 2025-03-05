@@ -18,5 +18,6 @@ return array (
 'submit'=> 'Save',
 'delete_Service'=>'delete Service',
 'warning'=> 'are you sure you want delete ',
+'add_service_group'=> 'add services Group',
 
 );

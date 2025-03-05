@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Doctor;
+use Livewire\Livewire;
+use App\Livewire\Counter;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -32,7 +34,11 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ], 
+   
     function () {
+        Livewire::setUpdateRoute(function ($handle) {
+            return Route::post('/livewire/update', $handle);
+        });
         Route::middleware('auth:admin')->prefix('dashboard')->group(function () {
             Route::get('admin', [DashboardController::class, 'index'])
                 ->name('admin');
@@ -40,11 +46,15 @@ Route::group(
           Route::resource('doctors',DoctorController::class);
           Route::get('doctors/section/{id}', [DoctorController::class, 'filterBySection'])->name('doctors.bySection');
           Route::resource('services',ServiceController::class);
-
+          Route::view('admin/empty', 'livewire.GroupServices.include_create')->name('add_GroupServices');
         });
+
+
 
         require __DIR__ . '/auth.php';
     }
 );
+
+
 // ============================================================================
 

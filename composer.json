@@ -12,9 +12,9 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "livewire/livewire": "^3.6",
         "mcamara/laravel-localization": "^2.0",
-        "php-flasher/flasher-toastr-laravel": "^1.15",
-        "yoeunes/toastr": "^2.3"
+        "php-flasher/flasher-toastr-laravel": "^1.15"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

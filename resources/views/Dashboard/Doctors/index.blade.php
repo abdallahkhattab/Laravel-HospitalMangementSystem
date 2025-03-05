@@ -26,6 +26,8 @@
     <!-- breadcrumb -->
 @endsection
 @section('content')
+
+
 @flasher_render
     <!-- row opened -->
     <div class="row row-sm">
