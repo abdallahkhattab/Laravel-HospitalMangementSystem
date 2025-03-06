@@ -160,7 +160,7 @@ public function filterBySection($sectionId)
             $doctor->appointment_days = $doctor->appointments->pluck('name')->implode(', ');
             return $doctor;
     });*/
-    
+
     return Section::with(['doctors.appointments', 'doctors.image'])
     ->findOrFail($sectionId) // Get the section or fail if not found
     ->doctors
@@ -168,6 +168,7 @@ public function filterBySection($sectionId)
         $doctor->appointment_days = $doctor->appointments->pluck('name')->implode(', ');
         return $doctor;
     });
+
 }
 
 

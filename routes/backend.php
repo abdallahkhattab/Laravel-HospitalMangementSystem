@@ -46,7 +46,7 @@ Route::group(
           Route::resource('doctors',DoctorController::class);
           Route::get('doctors/section/{id}', [DoctorController::class, 'filterBySection'])->name('doctors.bySection');
           Route::resource('services',ServiceController::class);
-          Route::view('admin/empty', 'livewire.GroupServices.include_create')->name('add_GroupServices');
+          Route::view('admin/Service', 'livewire.GroupServices.include_create')->name('add_GroupServices');
         });
 
 
