@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Appointment;
 use Illuminate\Database\Seeder;
+use Database\Seeders\InsuranceCompanySeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,6 +28,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(DoctorSeeder::class);*/
-        $this->call(AppointmentSeeder::class);
+     //   $this->call(AppointmentSeeder::class);
+
+     $this->call(InsuranceCompanySeeder::class);
     }
 }

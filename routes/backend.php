@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Doctor\DoctorController;
+use App\Http\Controllers\Dashboard\Insurance\InsuranceController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Dashboard\Section\SectionController;
 use App\Http\Controllers\Dashboard\Service\ServiceController;
@@ -47,6 +48,7 @@ Route::group(
           Route::get('doctors/section/{id}', [DoctorController::class, 'filterBySection'])->name('doctors.bySection');
           Route::resource('services',ServiceController::class);
           Route::view('admin/Service', 'livewire.GroupServices.include_create')->name('add_GroupServices');
+          Route::resource('insurance',InsuranceController::class);
         });
 
 
