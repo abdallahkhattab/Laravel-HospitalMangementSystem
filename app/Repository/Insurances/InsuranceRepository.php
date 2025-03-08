@@ -52,11 +52,11 @@ class InsuranceRepository implements InsuranceRepositoryInterface
 
             DB::commit();
             return redirect()->route('insurance.index')
-                ->with('success', trans('Dashboard/Insurance.created_successfully'));
+                ->with('success', trans('Dashboard/Insurance.insurance.created_successfully'));
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Insurance company creation failed: ' . $e->getMessage());
-            return back()->with('error', trans('Dashboard/Insurance.create_failed'));
+            return back()->with('error', trans('Dashboard/Insurance.insurance.create_failed'));
         }
     }
 
@@ -72,7 +72,7 @@ class InsuranceRepository implements InsuranceRepositoryInterface
             return view('Dashboard.Insurance.edit', compact('insurance'));
         } catch (\Exception $e) {
             Log::error('Failed to load edit form for insurance company: ' . $e->getMessage());
-            return back()->with('error', trans('Dashboard/Insurance.load_edit_failed'));
+            return back()->with('error', trans('Dashboard/Insurance.insurance.load_edit_failed'));
         }
     }
 
@@ -94,11 +94,11 @@ class InsuranceRepository implements InsuranceRepositoryInterface
 
             DB::commit();
             return redirect()->route('insurance.index')
-                ->with('success', trans('Dashboard/Insurance.updated_successfully'));
+                ->with('success', trans('Dashboard/Insurance.insurance.updated_successfully'));
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Insurance company update failed: ' . $e->getMessage());
-            return back()->with('error', trans('Dashboard/Insurance.update_failed'));
+            return back()->with('error', trans('Dashboard/Insurance.insurance.update_failed'));
         }
     }
 
@@ -116,11 +116,11 @@ class InsuranceRepository implements InsuranceRepositoryInterface
 
             DB::commit();
             return redirect()->route('insurance.index')
-                ->with('success', trans('Dashboard/Insurance.deleted_successfully'));
+                ->with('success', trans('Dashboard/Insurance.insurance.deleted_successfully'));
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Insurance company deletion failed: ' . $e->getMessage());
-            return back()->with('error', trans('Dashboard/Insurance.delete_failed'));
+            return back()->with('error', trans('Dashboard/Insurance.insurance.delete_failed'));
         }
     }
 }
