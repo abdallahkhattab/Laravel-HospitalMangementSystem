@@ -78,7 +78,7 @@
 
                         <div class="row">
                             <div class="col">
-                                <label>{{trans('insurance.notes')}}</label>
+                                <label>{{trans('Dashboard/Insurance.insurance.notes')}}</label>
                                 <textarea rows="5" cols="10" class="form-control"
                                           name="notes">{{$insurance->notes}}</textarea>
                             </div>

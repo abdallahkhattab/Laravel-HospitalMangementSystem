@@ -12,6 +12,7 @@ use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 class Doctor extends Model implements TranslatableContract
 {
     use HasFactory,Translatable;
+    
     public $translatedAttributes = ['name'];
 
     protected $fillable = [

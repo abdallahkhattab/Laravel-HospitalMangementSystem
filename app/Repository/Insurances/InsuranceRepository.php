@@ -46,6 +46,7 @@ class InsuranceRepository implements InsuranceRepositoryInterface
         DB::beginTransaction();
         try {
             $data = $request->validated();
+            
             $data['status'] = $request->has('status') ? 1 : 0;
 
             Insurance::create($data);

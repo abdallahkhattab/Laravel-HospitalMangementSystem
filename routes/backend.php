@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\Ambulances\AmbulanceController;
 use App\Models\Doctor;
 use Livewire\Livewire;
 use App\Livewire\Counter;
@@ -49,6 +50,7 @@ Route::group(
           Route::resource('services',ServiceController::class);
           Route::view('admin/Service', 'livewire.GroupServices.include_create')->name('add_GroupServices');
           Route::resource('insurance',InsuranceController::class);
+          Route::resource('ambulance',AmbulanceController::class);
         });
 
 
