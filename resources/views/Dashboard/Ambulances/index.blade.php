@@ -45,24 +45,25 @@
 											</tr>
 										</thead>
 										<tbody>
+                                        
                                         @foreach($ambulances as $ambulance)
 											<tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$ambulance->car_number}}</td>
                                                 <td>{{$ambulance->car_model}}</td>
                                                 <td>{{$ambulance->car_year_made}}</td>
-                                                <td>{{$ambulance->car_type == 1 ? 'مملكوكة' :'ايجار'}}</td>
+                                                <td>{{$ambulance->car_type == 1 ? 'مملوكه' :'ايجار'}}</td>
                                                 <td>{{$ambulance->driver_name}}</td>
                                                 <td>{{$ambulance->driver_license_number}}</td>
                                                 <td>{{$ambulance->driver_phone}}</td>
                                                 <td>{{$ambulance->is_available == 1 ? 'مفعلة':'غير مفعلة'}}</td>
                                                 <td>{{$ambulance->notes}}</td>
                                                 <td>
-                                                    <a href="{{route('Ambulance.edit',$ambulance->id)}}" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{route('ambulance.edit',$ambulance)}}" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
                                                     <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#Deleted{{$ambulance->id}}"><i class="fas fa-trash"></i></button>
                                                 </td>
 											</tr>
-                                            @include('Dashboard.Ambulances.Deleted')
+                                            @include('Dashboard.Ambulances.delete')
                                         @endforeach
 										</tbody>
 									</table>

@@ -50,7 +50,7 @@
 							<li><a class="slide-item" href="{{ route('services.index') }}">{{ __('Dashboard/Services.view_all') }}</a></li>
 							<li><a class="slide-item" href="{{ route('add_GroupServices')}}">{{  __('Dashboard/Services.add_service_group') }}</a></li>
 							<li><a class="slide-item" href="{{ route('insurance.index') }}">{{ __('Dashboard/Insurance.insurance.Add_Insurance') }}</a></li>
-							<li><a class="slide-item" href="{{ route('ambulance.index') }}">{{ __('Dashboard/Insurance.insurance.Add_imbulance') }}</a></li>
+							<li><a class="slide-item" href="{{ route('ambulance.index') }}">{{ __('Dashboard/Insurance.ambulance.Add_imbulance') }}</a></li>
 
 						</ul>
 					</li>

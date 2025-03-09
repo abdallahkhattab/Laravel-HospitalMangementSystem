@@ -12,9 +12,10 @@ class Ambulance extends Model implements TranslatableContract
     use HasFactory,Translatable;
 
 
-    public $translatedAttributes = ['name'];
+    public $translatedAttributes = ['driver_name','notes'];
 
     protected $fillable = [
+        'driver_name','notes',
         'car_number',
         'car_model',
         'car_year_made',

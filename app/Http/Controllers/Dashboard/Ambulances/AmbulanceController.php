@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Dashboard\Ambulances;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AmbulanceRequest;
 use App\interfaces\Ambulances\AmbulanceRepositoryInterface;
+use App\Models\Ambulance;
 use Illuminate\Http\Request;
 
 class AmbulanceController extends Controller
@@ -31,15 +33,17 @@ class AmbulanceController extends Controller
      */
     public function create()
     {
-        //
+        return $this->ambulanceRepository->create();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AmbulanceRequest $request)
     {
-        //
+
+        return $this->ambulanceRepository->store($request);
+        
     }
 
     /**
@@ -53,24 +57,24 @@ class AmbulanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Ambulance $ambulance)
     {
-        //
+        return $this->ambulanceRepository->edit($ambulance);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AmbulanceRequest $request,Ambulance $ambulance)
     {
-        //
+        return $this->ambulanceRepository->update($request,$ambulance);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Ambulance $ambulance)
     {
-        //
+        return $this->ambulanceRepository->destroy($ambulance);
     }
 }

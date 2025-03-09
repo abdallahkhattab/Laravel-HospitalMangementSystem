@@ -19,7 +19,7 @@ class AmbulanceRepository implements AmbulanceRepositoryInterface
     {
         try {
             $ambulances = Ambulance::all();
-            return view('Dashboard.Ambulance.index', compact('ambulances'));
+            return view('Dashboard.Ambulances.index', compact('ambulances'));
         } catch (\Exception $e) {
             Log::error('Failed to fetch ambulance: ' . $e->getMessage());
             return back()->with('error', 'Unable to load ambulance companies.');
@@ -33,7 +33,7 @@ class AmbulanceRepository implements AmbulanceRepositoryInterface
      */
     public function create()
     {
-        return view('Dashboard.Ambulance.create');
+        return view('Dashboard.Ambulances.create');
     }
 
     /**
@@ -47,9 +47,8 @@ class AmbulanceRepository implements AmbulanceRepositoryInterface
         DB::beginTransaction();
         try {
             $data = $request->validated();
-            
-            $data['status'] = $request->has('status') ? 1 : 0;
-
+            $data['is_available'] = 1;
+        
             Ambulance::create($data);
 
             DB::commit();
@@ -71,7 +70,7 @@ class AmbulanceRepository implements AmbulanceRepositoryInterface
     public function edit($ambulance)
     {
         try {
-            return view('Dashboard.Ambulance.edit', compact('ambulance'));
+            return view('Dashboard.Ambulances.edit', compact('ambulance'));
         } catch (\Exception $e) {
             Log::error('Failed to load edit form for ambulance: ' . $e->getMessage());
             return back()->with('error', trans('Dashboard/Ambulance.ambulance.load_edit_failed'));
@@ -85,12 +84,13 @@ class AmbulanceRepository implements AmbulanceRepositoryInterface
      * @param \App\Models\Ambulance $ambulance
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($request, $ambulance)
+    public function update($request,$ambulance)
     {
+
         DB::beginTransaction();
         try {
             $data = $request->validated();
-            $data['status'] = $request->has('status') ? 1 : 0;
+            $data['is_available'] = $request->has('is_available') ? 1 : 0;
 
             $ambulance->update($data);
 
@@ -117,7 +117,7 @@ class AmbulanceRepository implements AmbulanceRepositoryInterface
             $ambulance->delete();
 
             DB::commit();
-            return redirect()->route('ambulances.index')
+            return redirect()->route('ambulance.index')
                 ->with('success', trans('Dashboard/Ambulance.ambulance.deleted_successfully'));
         } catch (\Exception $e) {
             DB::rollBack();
