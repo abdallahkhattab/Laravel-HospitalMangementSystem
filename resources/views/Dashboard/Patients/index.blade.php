@@ -53,7 +53,7 @@
                                                 <td>{{$patient->Blood_Group}}</td>
                                                 <td>{{$patient->Address}}</td>
                                                 <td>
-                                                    <a href="{{route('patients.edit',$patient->id)}}" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                                                    <a href="{{route('patients.edit',$patient)}}" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
                                                     <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#Deleted{{$patient->id}}"><i class="fas fa-trash"></i></button>
                                                 </td>
 											</tr>

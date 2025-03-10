@@ -1,55 +1,97 @@
 <?php
+
 namespace App\Repository\Patients;
 
-use App\Models\Service;
-use Flasher\Laravel\Facade\Flasher;
-use App\interfaces\Patients\PatientRepositoryInterface;
 use App\Models\Patient;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use App\Interfaces\Patients\PatientRepositoryInterface;
 
 class PatientRepository implements PatientRepositoryInterface
 {
-
-   public function index()
-   {
-    
-    $patients = Patient::all();
-    return view('Dashboard.Patients.index',compact('patients'));
-    
-   }
+    public function index()
+    {
+        try {
+            $patients = Patient::all();
+            return view('Dashboard.Patients.index', compact('patients'));
+        } catch (\Exception $e) {
+            Log::error('Failed to fetch patients: ' . $e->getMessage());
+            return back()->with('error', 'Unable to load patients.');
+        }
+    }
 
     public function create()
     {
-        return view('Dashboard.Patients.create');
+        try {
+            return view('Dashboard.Patients.create');
+        } catch (\Exception $e) {
+            Log::error('Failed to load patient create form: ' . $e->getMessage());
+            return back()->with('error', 'Unable to load patient create form.');
+        }
     }
 
-    public function edit($patient){
-
+    public function edit($patient)
+    {
+        try {
+            return view('Dashboard.Patients.edit', compact('patient'));
+        } catch (\Exception $e) {
+            Log::error('Failed to load edit form for patient: ' . $e->getMessage());
+            return back()->with('error', 'Unable to load patient edit form.');
+        }
     }
 
     public function store($request)
     {
-
-        $data = $request->validated();
-
-        Patient::create($data);
-
-        return redirect()->route('patients.index')
-        ->with('success', trans('Dashboard/Patient.Patient.created_successfully'));
-        
+        DB::beginTransaction();
+        try {
+            $data = $request->validated();
+            $data['password'] = bcrypt($data['password']); // Hash the password
+            // The Astrotomic\Translatable package will handle 'name' and 'Address' translations
+            Patient::create($data);
+            DB::commit();
+            return redirect()->route('patients.index')
+                ->with('success', trans('Dashboard/Patient.created_successfully'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Patient creation failed: ' . $e->getMessage());
+            return back()->with('error', trans('Dashboard/Patient.create_failed'));
+        }
     }
 
     public function update($request,$patient)
     {
-
-       
-
-        
+        DB::beginTransaction();
+        try {
+            $data = $request->validated();
+            if (!empty($data['password'])) {
+                $data['password'] = bcrypt($data['password']); // Hash only if provided
+            } else {
+                unset($data['password']); // Keep existing password if not changed
+            }
+            // The Translatable package will handle updating translated fields
+            $patient->update($data);
+            DB::commit();
+            return redirect()->route('patients.index')
+                ->with('success', trans('Dashboard/Patient.updated_successfully'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Patient update failed: ' . $e->getMessage());
+            return back()->with('error', trans('Dashboard/Patient.update_failed'));
+        }
     }
-
 
     public function destroy($patient)
     {
-        
-        
+        DB::beginTransaction();
+        try {
+            $patient->delete();
+            DB::commit();
+            return redirect()->route('patients.index')
+                ->with('success', trans('Dashboard/Patient.deleted_successfully'));
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Patient deletion failed: ' . $e->getMessage());
+            return back()->with('error', trans('Dashboard/Patient.delete_failed'));
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard\Patient;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PatientRequest;
 use App\interfaces\Patients\PatientRepositoryInterface;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class PatientsController extends Controller
@@ -55,24 +56,24 @@ class PatientsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Patient $patient)
     {
-        //
+        return $this->patientRepository->edit($patient);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PatientRequest $request, Patient $patient)
     {
-        //
+        return $this->patientRepository->update($request,$patient);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Patient $patient)
     {
-        //
+        return $this->patientRepository->destroy($patient);
     }
 }
