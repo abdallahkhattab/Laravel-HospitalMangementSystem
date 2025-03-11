@@ -13,6 +13,7 @@ use App\Http\Controllers\Dashboard\Patient\PatientsController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Dashboard\Section\SectionController;
 use App\Http\Controllers\Dashboard\Service\ServiceController;
+use App\Livewire\SingleInvoices;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,8 @@ Route::group(
           Route::resource('insurance',InsuranceController::class);
           Route::resource('ambulance',AmbulanceController::class);
           Route::resource('patients',PatientsController::class);
+          Route::view('single_invoices','livewire.single_invoices.index')->name('single_invoices');
+
         });
 
 

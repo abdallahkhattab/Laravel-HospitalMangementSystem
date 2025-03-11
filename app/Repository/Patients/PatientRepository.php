@@ -45,7 +45,7 @@ class PatientRepository implements PatientRepositoryInterface
         DB::beginTransaction();
         try {
             $data = $request->validated();
-            $data['password'] = bcrypt($data['password']); // Hash the password
+            $data['password'] = bcrypt($data['Phone']);
             // The Astrotomic\Translatable package will handle 'name' and 'Address' translations
             Patient::create($data);
             DB::commit();
@@ -63,11 +63,8 @@ class PatientRepository implements PatientRepositoryInterface
         DB::beginTransaction();
         try {
             $data = $request->validated();
-            if (!empty($data['password'])) {
-                $data['password'] = bcrypt($data['password']); // Hash only if provided
-            } else {
-                unset($data['password']); // Keep existing password if not changed
-            }
+            $data['password'] = bcrypt($data['Phone']);
+
             // The Translatable package will handle updating translated fields
             $patient->update($data);
             DB::commit();

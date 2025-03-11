@@ -28,7 +28,6 @@ class DoctorFactory extends Factory
             'phone'=>$this->faker->phoneNumber,
             'password'=>$password,
             'price'=>$this->faker->randomElement([100,200,300,400,500]),
-            'appointments'=>$this->faker->randomElement(['Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday']),
             'section_id' => Section::factory(), // Creates or references a section
         ];
     }

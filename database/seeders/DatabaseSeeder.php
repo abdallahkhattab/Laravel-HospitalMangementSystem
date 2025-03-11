@@ -25,11 +25,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             AdminSeeder::class,
-        ]);
+        ]);*/
 
-        $this->call(DoctorSeeder::class);*/
-     //   $this->call(AppointmentSeeder::class);
+       // $this->call(DoctorSeeder::class);
+        $this->call(AppointmentSeeder::class);
 
-     $this->call(InsuranceCompanySeeder::class);
+   //  $this->call(InsuranceCompanySeeder::class);
     }
 }
