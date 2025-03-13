@@ -251,7 +251,7 @@ class SingleInvoices extends Component
 
     public function destroy(){
         single_invoice::destroy($this->single_invoice_id);
-        return redirect()->to('/single_invoices');
+        return redirect()->route('single_invoices');
     }
 }
 

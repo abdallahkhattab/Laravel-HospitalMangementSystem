@@ -14,7 +14,7 @@ class PatientsController extends Controller
      * Display a listing of the resource.
      */
 
-    protected $patientRepository ;
+    protected $patientRepository;
 
     public function __construct(PatientRepositoryInterface $patient_repository)
     {

@@ -10,6 +10,7 @@ use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\Doctor\DoctorController;
 use App\Http\Controllers\Dashboard\Insurance\InsuranceController;
 use App\Http\Controllers\Dashboard\Patient\PatientsController;
+use App\Http\Controllers\Dashboard\Receipt\ReceiptAccountController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Dashboard\Section\SectionController;
 use App\Http\Controllers\Dashboard\Service\ServiceController;
@@ -55,6 +56,7 @@ Route::group(
           Route::resource('ambulance',AmbulanceController::class);
           Route::resource('patients',PatientsController::class);
           Route::view('single_invoices','livewire.single_invoices.index')->name('single_invoices');
+          Route::resource('Receipt',ReceiptAccountController::class);
 
         });
 
