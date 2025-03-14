@@ -38,14 +38,14 @@ class ReceiptRepository implements ReceiptRepositoryInterface
             $receipt_accounts = new ReceiptAccount();
             $receipt_accounts->date =date('y-m-d');
             $receipt_accounts->patient_id = $request->patient_id;
-            $receipt_accounts->Debit = $request->Debit;
+            $receipt_accounts->amount = $request->Debit;
             $receipt_accounts->description = $request->description;
             $receipt_accounts->save();
             // store fund_accounts
             $fund_accounts = new FundAccount();
             $fund_accounts->date =date('y-m-d');
             $fund_accounts->receipt_id = $receipt_accounts->id;
-            $fund_accounts->Debit = $request->Debit;
+            $fund_accounts->amount = $request->Debit;
             $fund_accounts->credit = 0.00;
             $fund_accounts->save();
             // store patient_accounts
@@ -53,8 +53,8 @@ class ReceiptRepository implements ReceiptRepositoryInterface
             $patient_accounts->date =date('y-m-d');
             $patient_accounts->patient_id = $request->patient_id;
             $patient_accounts->receipt_id = $receipt_accounts->id;
-            $patient_accounts->Debit = 0.00;
-            $patient_accounts->credit =$request->Debit;
+            $patient_accounts->amount = 0.00;
+            $patient_accounts->amount =$request->Debit;
             $patient_accounts->save();
             DB::commit();
             Flasher::addSuccess(__('Dashboard/messages.add_success'));
@@ -88,14 +88,14 @@ class ReceiptRepository implements ReceiptRepositoryInterface
             $receipt_accounts = ReceiptAccount::findorfail($request->id);
             $receipt_accounts->date =date('y-m-d');
             $receipt_accounts->patient_id = $request->patient_id;
-            $receipt_accounts->Debit = $request->Debit;
+            $receipt_accounts->amount = $request->Debit;
             $receipt_accounts->description = $request->description;
             $receipt_accounts->save();
             // store fund_accounts
             $fund_accounts = FundAccount::where('receipt_id',$request->id)->first();
             $fund_accounts->date =date('y-m-d');
             $fund_accounts->receipt_id = $receipt_accounts->id;
-            $fund_accounts->Debit = $request->Debit;
+            $fund_accounts->amount = $request->Debit;
             $fund_accounts->credit = 0.00;
             $fund_accounts->save();
             // store patient_accounts
@@ -103,8 +103,8 @@ class ReceiptRepository implements ReceiptRepositoryInterface
             $patient_accounts->date =date('y-m-d');
             $patient_accounts->patient_id = $request->patient_id;
             $patient_accounts->receipt_id = $receipt_accounts->id;
-            $patient_accounts->Debit = 0.00;
-            $patient_accounts->credit =$request->Debit;
+            $patient_accounts->amount = 0.00;
+            $patient_accounts->amount =$request->Debit;
             $patient_accounts->save();
 
 
