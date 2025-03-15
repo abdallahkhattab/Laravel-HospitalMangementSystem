@@ -45,7 +45,7 @@ class ReceiptRepository implements ReceiptRepositoryInterface
             $fund_accounts = new FundAccount();
             $fund_accounts->date =date('y-m-d');
             $fund_accounts->receipt_id = $receipt_accounts->id;
-            $fund_accounts->amount = $request->Debit;
+            $fund_accounts->Debit = $request->Debit;
             $fund_accounts->credit = 0.00;
             $fund_accounts->save();
             // store patient_accounts
@@ -53,8 +53,8 @@ class ReceiptRepository implements ReceiptRepositoryInterface
             $patient_accounts->date =date('y-m-d');
             $patient_accounts->patient_id = $request->patient_id;
             $patient_accounts->receipt_id = $receipt_accounts->id;
-            $patient_accounts->amount = 0.00;
-            $patient_accounts->amount =$request->Debit;
+            $patient_accounts->Debit = 0.00;
+            $patient_accounts->Debit =$request->Debit;
             $patient_accounts->save();
             DB::commit();
             Flasher::addSuccess(__('Dashboard/messages.add_success'));
@@ -67,6 +67,12 @@ class ReceiptRepository implements ReceiptRepositoryInterface
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
          }
 
+    }
+
+    public function show($id)
+    {
+        $receipt = ReceiptAccount::findorfail($id);
+        return view('Dashboard.Receipt.print',compact('receipt'));
     }
 
 

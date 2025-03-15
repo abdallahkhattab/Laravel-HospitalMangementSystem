@@ -48,10 +48,12 @@
                                                    <td>{{ $receipt->patients->name }}</td>
                                                    <td>{{ number_format($receipt->Debit, 2) }}</td>
                                                    <td>{{ \Str::limit($receipt->description, 50) }}</td>
-                                                   <td>{{ $receipt->created_at->diffForHumans() }}</td>
+                                                   <td>{{ $receipt->created_at ? $receipt->created_at->diffForHumans() : '' }}</td>
                                                    <td>
                                                        <a href="{{route('Receipt.edit',$receipt->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                                                        <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"  data-toggle="modal" href="#delete{{$receipt->id}}"><i class="las la-trash"></i></a>
+                                                       <a href="{{route('Receipt.show',$receipt->id)}}" class="btn btn-primary btn-sm" target="_blank" title="طباعه سند صرف"><i class="fas fa-print"></i></a>
+
                                                    </td>
                                                </tr>
                                            @include('Dashboard.Receipt.delete')

@@ -30,6 +30,7 @@ class PaymentRepository implements PaymentRepositoryInterface
     public function show($id)
     {
         $payment_account = PaymentAccount::findorfail($id);
+      
         return view('Dashboard.Payment.print',compact('payment_account'));
     }
 
@@ -50,7 +51,7 @@ class PaymentRepository implements PaymentRepositoryInterface
             // store fund_accounts
             $fund_accounts = new FundAccount();
             $fund_accounts->date =date('y-m-d');
-            $fund_accounts->Payment_id = $payment_accounts->id;
+            $fund_accounts->payment_id = $payment_accounts->id;
             $fund_accounts->credit = $request->credit;
             $fund_accounts->Debit = 0.00;
             $fund_accounts->save();
@@ -59,18 +60,19 @@ class PaymentRepository implements PaymentRepositoryInterface
             $patient_accounts = new PatientAccount();
             $patient_accounts->date =date('y-m-d');
             $patient_accounts->patient_id = $request->patient_id;
-            $patient_accounts->Payment_id = $payment_accounts->id;
+            $patient_accounts->payment_id = $payment_accounts->id;
             $patient_accounts->Debit = $request->credit;
             $patient_accounts->credit = 0.00;
             $patient_accounts->save();
 
             DB::commit();
-            session()->flash('add');
+            Flasher::addSuccess(__('Dashboard/messages.add_success'));
             return redirect()->route('Payment.create');
 
         }
         catch (\Exception $e) {
             DB::rollback();
+            Flasher::addError('Failed: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
@@ -97,25 +99,25 @@ class PaymentRepository implements PaymentRepositoryInterface
             $payment_accounts->save();
 
             // update fund_accounts
-            $fund_accounts = FundAccount::where('Payment_id',$payment_accounts->id)->first();
+            $fund_accounts = FundAccount::where('payment_id',$payment_accounts->id)->first();
             $fund_accounts->date =date('y-m-d');
-            $fund_accounts->Payment_id = $payment_accounts->id;
+            $fund_accounts->payment_id = $payment_accounts->id;
             $fund_accounts->credit = $request->credit;
             $fund_accounts->Debit = 0.00;
             $fund_accounts->save();
 
             // update patient_accounts
-            $patient_accounts = PatientAccount::where('Payment_id',$payment_accounts->id)->first();
+            $patient_accounts = PatientAccount::where('payment_id',$payment_accounts->id)->first();
             $patient_accounts->date =date('y-m-d');
             $patient_accounts->patient_id = $request->patient_id;
-            $patient_accounts->Payment_id = $payment_accounts->id;
+            $patient_accounts->payment_id = $payment_accounts->id;
             $patient_accounts->Debit = $request->credit;
             $patient_accounts->credit = 0.00;
             $patient_accounts->save();
 
             DB::commit();
-            session()->flash('edit');
-            return redirect()->route('Payment.index');
+            Flasher::addSuccess(__('Dashboard/messages.add_success'));
+            return redirect()->route('Payment.create');
 
         }
         catch (\Exception $e) {
@@ -127,11 +129,12 @@ class PaymentRepository implements PaymentRepositoryInterface
     public function destroy($request)
     {
         try {
-            PaymentAccount ::destroy($request->id);
-            session()->flash('delete');
+            PaymentAccount::destroy($request->id);
+            Flasher::addSuccess(__('Dashboard/messages.delete_success'));
             return redirect()->back();
         }
         catch (\Exception $e) {
+            Flasher::addError('Failed: ' . $e->getMessage());
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }

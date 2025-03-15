@@ -71,7 +71,6 @@
 						<ul class="slide-menu">
 							<li><a class="slide-item" href="{{ route('Receipt.index') }}">{{ __('Dashboard/Reciept.view_all') }}</a></li>
 							<li><a class="slide-item" href="{{ route('Payment.index') }}">{{ __('Dashboard/Payment.view_all') }}</a></li>
-
 						</ul>
 					</li>
 				</ul>

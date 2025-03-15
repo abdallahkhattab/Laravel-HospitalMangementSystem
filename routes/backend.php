@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\Doctor\DoctorController;
 use App\Http\Controllers\Dashboard\Insurance\InsuranceController;
 use App\Http\Controllers\Dashboard\Patient\PatientsController;
 use App\Http\Controllers\Dashboard\Payment\PaymentAccount;
+use App\Http\Controllers\Dashboard\Payment\PaymentAccountController;
 use App\Http\Controllers\Dashboard\Receipt\ReceiptAccountController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Dashboard\Section\SectionController;
@@ -58,7 +59,7 @@ Route::group(
           Route::resource('patients',PatientsController::class);
           Route::view('single_invoices','livewire.single_invoices.index')->name('single_invoices');
           Route::resource('Receipt',ReceiptAccountController::class);
-          Route::resource('Payment',PaymentAccount::class);
+          Route::resource('Payment',PaymentAccountController::class);
         });
 
 
