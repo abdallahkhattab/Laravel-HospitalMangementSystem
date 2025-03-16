@@ -36,7 +36,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(AmbulanceRepositoryInterface::class,AmbulanceRepository::class);
         $this->app->bind(PatientRepositoryInterface::class,PatientRepository::class);
         $this->app->bind(ReceiptRepositoryInterface::class,ReceiptRepository::class);
-       $this->app->bind(PaymentRepositoryInterface::class,PaymentRepository::class);
+        $this->app->bind(PaymentRepositoryInterface::class,PaymentRepository::class);
 
      
     }

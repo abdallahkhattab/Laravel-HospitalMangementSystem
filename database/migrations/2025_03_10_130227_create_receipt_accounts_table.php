@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
           //  $table->decimal('Debit',8,2)->nullable();
           $table->decimal('amount',8,2)->nullable();
-
             $table->string('description');
         });
     }

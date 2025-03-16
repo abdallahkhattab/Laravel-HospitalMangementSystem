@@ -6,6 +6,9 @@ use App\Models\Patient;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Interfaces\Patients\PatientRepositoryInterface;
+use App\Models\PatientAccount;
+use App\Models\ReceiptAccount;
+use App\Models\single_invoice;
 
 class PatientRepository implements PatientRepositoryInterface
 {
@@ -28,6 +31,15 @@ class PatientRepository implements PatientRepositoryInterface
             Log::error('Failed to load patient create form: ' . $e->getMessage());
             return back()->with('error', 'Unable to load patient create form.');
         }
+    }
+
+    public function show($patient){
+
+        $invoices = single_invoice::where('patient_id', $patient->id)->get();
+        $receipt_accounts  = ReceiptAccount::where('patient_id', $patient->id)->get();
+        $Patient_accounts = PatientAccount::where('patient_id', $patient->id)->get();
+
+       return view('Dashboard.Patients.show',compact('patient','invoices','receipt_accounts','Patient_accounts'));
     }
 
     public function edit($patient)

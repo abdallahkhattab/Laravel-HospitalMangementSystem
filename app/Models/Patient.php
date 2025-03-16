@@ -12,7 +12,24 @@ class Patient extends Model implements TranslatableContract
 {
     use HasFactory,Translatable;
 
+        public function invoices()
+    {
+        return $this->hasMany(single_invoice::class, 'patient_id');
+    }
+
+    public function receiptAccounts()
+    {
+        return $this->hasMany(ReceiptAccount::class, 'patient_id');
+    }
+
+    public function patientAccounts()
+    {
+        return $this->hasMany(PatientAccount::class, 'patient_id');
+    }
+
+
     protected $translatedAttributes = ['name'];
+
 
     
     protected $fillable = [
