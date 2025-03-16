@@ -12,7 +12,7 @@ class Patient extends Model implements TranslatableContract
 {
     use HasFactory,Translatable;
 
-        public function invoices()
+        public function singleInvoices()
     {
         return $this->hasMany(single_invoice::class, 'patient_id');
     }

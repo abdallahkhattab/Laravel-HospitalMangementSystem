@@ -35,12 +35,15 @@ class PatientRepository implements PatientRepositoryInterface
 
     public function show($patient){
 
-        $invoices = single_invoice::where('patient_id', $patient->id)->get();
-        $receipt_accounts  = ReceiptAccount::where('patient_id', $patient->id)->get();
-        $Patient_accounts = PatientAccount::where('patient_id', $patient->id)->get();
+        $patient->load(['singleInvoices', 'receiptAccounts', 'patientAccounts']);
 
-       return view('Dashboard.Patients.show',compact('patient','invoices','receipt_accounts','Patient_accounts'));
-    }
+        return view('Dashboard.Patients.show', [
+            'patient' => $patient,
+            'invoices' => $patient->singleInvoices,
+            'receiptAccounts' => $patient->receiptAccounts,
+            'patientAccounts' => $patient->patientAccounts
+        ]);
+     }
 
     public function edit($patient)
     {
