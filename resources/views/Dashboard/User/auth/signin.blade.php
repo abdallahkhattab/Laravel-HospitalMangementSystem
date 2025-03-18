@@ -53,51 +53,59 @@
                                                 <option value="null" disabled selected>{{ __('Dashboard/login_trans.Choose_from_list') }}</option>
                                                 <option value="user">{{ __('Dashboard/login_trans.Patient') }}</option>
                                                 <option value="admin">{{ __('Dashboard/login_trans.Admin') }}</option>
+                                                <option value="doctor">{{ __('Dashboard/login_trans.Doctor') }}</option>
                                             </select>
                                         </div>
 
-                                        <!-- نموذج تسجيل دخول المستخدم -->
+                                        <!-- User Login -->
                                         <div class="loginform" id="user-login">
                                             <h5 class="font-weight-semibold mb-4">{{ __('Dashboard/login_trans.Login_as_user') }}</h5>
                                             <form method="POST" action="{{ route('login.user') }}">
                                                 @csrf
                                                 <div class="form-group">
                                                     <label>{{ __('Dashboard/login_trans.Email') }}</label>
-                                                    <input class="form-control" placeholder="{{ __('Dashboard/login_trans.Enter_email') }}" type="text" name="email" value="{{ old('email') }}" required autofocus autocomplete="username">
+                                                    <input class="form-control" placeholder="{{ __('Dashboard/login_trans.Enter_email') }}" type="text" name="email" required autofocus>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>{{ __('Dashboard/login_trans.Password') }}</label>
-                                                    <input class="form-control" placeholder="{{ __('Dashboard/login_trans.Enter_password') }}" type="password" name="password" required autofocus>
+                                                    <input class="form-control" placeholder="{{ __('Dashboard/login_trans.Enter_password') }}" type="password" name="password" required>
                                                 </div>
                                                 <button class="btn btn-main-primary btn-block" type="submit">{{ __('Dashboard/login_trans.Sign_in') }}</button>
                                             </form>
-                                            <div class="main-signin-footer mt-5">
-                                                <p><a href="#">{{ __('Dashboard/login_trans.Forgot_password') }}</a></p>
-                                                <p>{{ __('Dashboard/login_trans.Dont_have_account') }} <a href="{{ url('/' . $page='signup') }}">{{ __('Dashboard/login_trans.Create_account') }}</a></p>
-                                            </div>
                                         </div>
 
-                                        <!-- نموذج تسجيل دخول الأدمن -->
+                                        <!-- Admin Login -->
                                         <div class="loginform" id="admin-login">
                                             <h5 class="font-weight-semibold mb-4">{{ __('Dashboard/login_trans.Login_as_admin') }}</h5>
                                             <form method="POST" action="{{ route('login.admin') }}">
                                                 @csrf
                                                 <div class="form-group">
                                                     <label>{{ __('Dashboard/login_trans.Email') }}</label>
-                                                    <input class="form-control" placeholder="{{ __('Dashboard/login_trans.Enter_email') }}" type="text" name="email" value="{{ old('email') }}" required autofocus autocomplete="username">
-                                                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                                    <input class="form-control" placeholder="{{ __('Dashboard/login_trans.Enter_email') }}" type="text" name="email" required autofocus>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>{{ __('Dashboard/login_trans.Password') }}</label>
-                                                    <input class="form-control" placeholder="{{ __('Dashboard/login_trans.Enter_password') }}" type="password" name="password" required autofocus>
-                                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                                    <input class="form-control" placeholder="{{ __('Dashboard/login_trans.Enter_password') }}" type="password" name="password" required>
                                                 </div>
                                                 <button class="btn btn-main-primary btn-block" type="submit">{{ __('Dashboard/login_trans.Sign_in') }}</button>
                                             </form>
-                                            <div class="main-signin-footer mt-5">
-                                                <p><a href="#">{{ __('Dashboard/login_trans.Forgot_password') }}</a></p>
-                                                <p>{{ __('Dashboard/login_trans.Dont_have_account') }} <a href="{{ url('/' . $page='signup') }}">{{ __('Dashboard/login_trans.Create_account') }}</a></p>
-                                            </div>
+                                        </div>
+
+                                        <!-- Doctor Login -->
+                                        <div class="loginform" id="doctor-login">
+                                            <h5 class="font-weight-semibold mb-4">{{ __('Dashboard/login_trans.Login_as_doctor') }}</h5>
+                                            <form method="POST" action="{{ route('login.doctor') }}">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label>{{ __('Dashboard/login_trans.Email') }}</label>
+                                                    <input class="form-control" placeholder="{{ __('Dashboard/login_trans.Enter_email') }}" type="text" name="email" required autofocus>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>{{ __('Dashboard/login_trans.Password') }}</label>
+                                                    <input class="form-control" placeholder="{{ __('Dashboard/login_trans.Enter_password') }}" type="password" name="password" required>
+                                                </div>
+                                                <button class="btn btn-main-primary btn-block" type="submit">{{ __('Dashboard/login_trans.Sign_in') }}</button>
+                                            </form>
                                         </div>
                                     </div> 
                                 </div> 
@@ -124,6 +132,8 @@ $(document).ready(function() {
             $("#user-login").show(); 
         } else if (selectedValue === "admin") {
             $("#admin-login").show(); 
+        } else if (selectedValue === "doctor") {
+            $("#doctor-login").show(); 
         }
     });
 });

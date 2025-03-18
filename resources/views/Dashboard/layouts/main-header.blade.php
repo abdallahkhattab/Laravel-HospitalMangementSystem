@@ -256,10 +256,19 @@
 									<a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
 									<a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
 									<a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a>
+									@if (auth('admin')->check())
 									<form method="POST" action="{{ route('logout.admin') }}">
 										@csrf
 										<button type="submit" class="dropdown-item"><i class="bx bx-log-out"></i> Sign Out</button>
 									</form>
+									@elseif(auth('doctor')->check())
+									<form method="POST" action="{{ route('logout.doctor') }}">
+										@csrf
+										<button type="submit" class="dropdown-item"><i class="bx bx-log-out"></i> Sign Out</button>
+									</form>
+										
+									@endif
+						
 									
 								</div>
 							</div>

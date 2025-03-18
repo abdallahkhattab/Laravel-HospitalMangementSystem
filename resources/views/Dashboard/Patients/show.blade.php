@@ -93,6 +93,8 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
+                                                    
+                                                        
                                                     @foreach($invoices as $invoice)
                                                         <tr>
                                                             <td>{{ $loop->iteration }}</td>

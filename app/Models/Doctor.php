@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 use Astrotomic\Translatable\Translatable;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 
 
-class Doctor extends Model implements TranslatableContract
+class Doctor extends Authenticatable implements TranslatableContract
 {
     use HasFactory,Translatable;
     

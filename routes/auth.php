@@ -1,16 +1,17 @@
 <?php
 
-use App\Http\Controllers\Auth\Admin\AdminController;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Auth\Admin\AdminController;
+use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\Doctor\DoctorController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\ConfirmablePasswordController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -42,8 +43,14 @@ Route::post('reset-password', [NewPasswordController::class, 'store'])
     Route::post('login/admin', [AdminController::class, 'store'])->name('login.admin');
     Route::post('admin/logout', [AdminController::class, 'destroy'])
     ->name('logout.admin');
+//################################################ Route Admin #########################//
+//################################################ Route Doctor #########################//
+Route::post('login/doctor',[DoctorController::class,'store'])->middleware('guest')->name('login.doctor');
 
-  
+Route::post('logout/doctor',[DoctorController::class,'destroy'])->middleware('auth:doctor')->name('logout.doctor');
+
+//################################################ End Route Doctor #########################//
+
 
 
 Route::middleware('auth')->group(function () {

@@ -34,7 +34,7 @@ class PatientRepository implements PatientRepositoryInterface
     }
 
     public function show($patient){
-
+        
         $patient->load(['singleInvoices', 'receiptAccounts', 'patientAccounts']);
 
         return view('Dashboard.Patients.show', [
@@ -43,7 +43,8 @@ class PatientRepository implements PatientRepositoryInterface
             'receiptAccounts' => $patient->receiptAccounts,
             'patientAccounts' => $patient->patientAccounts
         ]);
-     }
+        
+        }
 
     public function edit($patient)
     {
