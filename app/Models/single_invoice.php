@@ -21,6 +21,7 @@ class single_invoice extends Model
         'tax_value',
         'total_with_tax',
         'type',
+        'invoice_status'
     ];
 
     public function Service()
