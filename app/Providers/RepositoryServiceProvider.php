@@ -19,10 +19,12 @@ use App\interfaces\Sections\SectionRepositoryInterface;
 use App\interfaces\Ambulances\AmbulanceRepositoryInterface;
 use App\interfaces\Doctor_dashboard\DiagnosisRepositoryInterface;
 use App\interfaces\Doctor_dashboard\InvoicesRepositoryInterface;
+use App\interfaces\Doctor_dashboard\RaysRepositoryInterface;
 use App\interfaces\Insurances\InsuranceRepositoryInterface;
 use App\interfaces\Services\SingleServiceRepositoryInterface;
 use App\Repository\Doctor_dashboard\DiagnosisRepository;
 use App\Repository\Doctor_dashboard\InvoicesRepository;
+use App\Repository\Doctor_dashboard\RaysRepository;
 use App\Repository\Finance\PaymentRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -43,6 +45,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(PaymentRepositoryInterface::class,PaymentRepository::class);
         $this->app->bind(InvoicesRepositoryInterface::class,InvoicesRepository::class);
         $this->app->bind(DiagnosisRepositoryInterface::class,DiagnosisRepository::class);
+        $this->app->bind(RaysRepositoryInterface::class,RaysRepository::class);
 
      
     }

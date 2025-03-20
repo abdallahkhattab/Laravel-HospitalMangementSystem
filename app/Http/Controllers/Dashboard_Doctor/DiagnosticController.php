@@ -75,4 +75,10 @@ class DiagnosticController extends Controller
     public function addReview(diagnoiseRequest $request){
         return $this->diagnoise->addReview($request);
     }
+
+    public function update_invoice_status($data, $status_id){
+        
+        return $this->diagnoise->update_invoice_status($data,$status_id);
+    }
+
 }
