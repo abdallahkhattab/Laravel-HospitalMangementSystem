@@ -1,22 +1,21 @@
 <?php
-
 namespace App\Repository\Doctor_dashboard;
 
-use App\Models\Ray;
+use App\Models\Laboratorie;
 use Flasher\Laravel\Facade\Flasher;
-use App\interfaces\Doctor_dashboard\RaysRepositoryInterface;
-use App\Repository\BaseRepository\BaseRepository;
+use App\interfaces\Doctor_dashboard\LaboratoriesRepositoryInterface;
+use App\Models\Ray;
 
-class RaysRepository implements RaysRepositoryInterface
+class LaboratoriesRepository implements LaboratoriesRepositoryInterface
 {
-
-
+   
     public function store($request){
+        
         try{
 
             $data = $request->validated();
 
-            Ray::create($data);
+            Laboratorie::create($data);
     
             Flasher::addSuccess(__('Dashboard/messages.add_success'));
     
@@ -33,14 +32,11 @@ class RaysRepository implements RaysRepositoryInterface
 
     public function update($request,$id)
     {
-        
       
         try{
-            
+
             $data = $request->validated();
-            $ray = Ray::findOrFail($id);
-            $ray->update($data);
-            
+            $this->update($data,$id);
             Flasher::addSuccess(__('Dashboard/messages.add_success'));
     
             return redirect()->route('invoices.index');
@@ -55,8 +51,8 @@ class RaysRepository implements RaysRepositoryInterface
     public function destroy($id)
     {
         try {
-            $ray = Ray::find($id); // Uses BaseRepository method
-            $ray->delete(); // Uses BaseRepository method
+            $laboratorie = Laboratorie::findOrFail($id); // Uses BaseRepository method
+            $laboratorie->delete($laboratorie); // Uses BaseRepository method
 
             Flasher::addSuccess(__('Dashboard/messages.delete_success'));
             return redirect()->route('invoices.index');
@@ -66,7 +62,4 @@ class RaysRepository implements RaysRepositoryInterface
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
-
-
-
 }

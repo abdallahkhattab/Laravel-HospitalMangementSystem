@@ -14,7 +14,7 @@ class InvoicesRepository implements InvoicesRepositoryInterface
 
     public function index(){
 
-        $invoices =single_invoice::where('doctor_id',Auth()->id())->get();
+        $invoices =single_invoice::where('doctor_id','=',Auth()->id())->get();
 
         return view('Dashboard.doctor.invoices.index',compact('invoices'));
     }
@@ -23,7 +23,7 @@ class InvoicesRepository implements InvoicesRepositoryInterface
       // قائمة المراجعات
       public function reviewInvoices()
       {
-          $invoices = single_invoice::where('doctor_id', Auth::user()->id)->where('invoice_status', 2)->get();
+          $invoices = single_invoice::where('doctor_id','=',Auth::user()->id)->where('invoice_status',2)->get();
           return view('Dashboard.Doctor.invoices.review_invoices', compact('invoices'));
       }
   
@@ -31,7 +31,7 @@ class InvoicesRepository implements InvoicesRepositoryInterface
       public function completedInvoices()
   
       {
-          $invoices = single_invoice::where('doctor_id', Auth::user()->id)->where('invoice_status', 3)->get();
+          $invoices = single_invoice::where('doctor_id','=',Auth::user()->id)->where('invoice_status',3)->get();
           return view('Dashboard.Doctor.invoices.completed_invoices', compact('invoices'));
       }
 }

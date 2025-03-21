@@ -1,8 +1,8 @@
 <?php
-
 namespace App\interfaces\Doctor_dashboard;
 
-interface RaysRepositoryInterface {
+interface LaboratoriesRepositoryInterface
+{
 
     public function store($request);
 

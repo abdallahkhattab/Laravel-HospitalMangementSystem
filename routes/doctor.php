@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard_Doctor\RaysController;
 use App\Http\Controllers\Dashboard_Doctor\InvoiceController;
 use App\Http\Controllers\Dashboard_Doctor\DiagnosticController;
+use App\Http\Controllers\Dashboard_doctor\LaboratoriesController;
 use App\Http\Controllers\Dashboard_doctor\PatientDetailsController;
 
 /*
@@ -72,6 +73,8 @@ Route::group(
             //############################# End xrays route ######################################
 
             Route::get('patient_details/{id}', [PatientDetailsController::class,'index'])->name('patient_details');
+
+            Route::resource('Laboratories', LaboratoriesController::class);
 
 
 

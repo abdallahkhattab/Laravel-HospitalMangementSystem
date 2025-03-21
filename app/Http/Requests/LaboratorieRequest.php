@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RaysRequest extends FormRequest
+class LaboratorieRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,12 +21,11 @@ class RaysRequest extends FormRequest
      */
     public function rules(): array
     {
-        return[
-            'description' => 'required|string|min:1' ,
-            'invoice_id'  => 'sometimes|exists:single_invoices,id',
-            'patient_id'  => 'sometimes|exists:patients,id' ,
-            'doctor_id'   => 'sometimes|exists:doctors,id' ,
+        return [
+            'description' => 'required|string',
+            'invoice_id' => 'required|exists:single_invoices,id',
+            'patient_id' => 'required|exists:patients,id',
+            'doctor_id' => 'required|exists:doctors,id',            
         ];
-
     }
 }

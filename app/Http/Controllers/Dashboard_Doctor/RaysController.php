@@ -57,9 +57,9 @@ class RaysController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(RaysRequest $request, Ray $ray)
+    public function update(RaysRequest $request, $id)
     {
-       return $this->RaysRepository->update($request,$ray); 
+       return $this->RaysRepository->update($request,$id); 
     }
 
     /**
