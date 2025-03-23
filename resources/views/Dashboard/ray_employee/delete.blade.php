@@ -9,7 +9,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('ray_employee.destroy', $ray_employee->id) }}" method="post">
+            <form action="{{ route('manage_ray_employee.destroy', $ray_employee->id) }}" method="post">
                 {{ method_field('delete') }}
                 {{ csrf_field() }}
             <div class="modal-body">

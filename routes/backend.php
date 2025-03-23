@@ -63,7 +63,7 @@ Route::group(
           Route::view('single_invoices','livewire.single_invoices.index')->name('single_invoices');
           Route::resource('Receipt',ReceiptAccountController::class);
           Route::resource('Payment',PaymentAccountController::class);
-          Route::resource('ray_employee', RayEmployeeController::class);
+          Route::resource('manage_ray_employee', RayEmployeeController::class);
         });
 
         
@@ -71,10 +71,6 @@ Route::group(
 
 // ========================== Start Doctor Dashboard Routes ==========================
 
-Route::middleware(['auth:doctor'])->group(function () {
-    Route::get('dashboard/doctor', fn() => view('Dashboard.doctor.dashboard'))
-        ->name('dashboard.doctor');
-});
 
 
 // ========================== End Doctor Dashboard Routes ==========================

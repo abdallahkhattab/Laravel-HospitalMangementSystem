@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ route('ray_employee.store') }}" method="post" autocomplete="off">
+            <form action="{{ route('manage_ray_employee.store') }}" method="post" autocomplete="off">
                 @csrf
                 <div class="modal-body">
                     <label for="exampleInputPassword1">الاسم</label>

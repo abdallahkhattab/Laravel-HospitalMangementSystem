@@ -54,6 +54,8 @@
                                                 <option value="user">{{ __('Dashboard/login_trans.Patient') }}</option>
                                                 <option value="admin">{{ __('Dashboard/login_trans.Admin') }}</option>
                                                 <option value="doctor">{{ __('Dashboard/login_trans.Doctor') }}</option>
+                                                <option value="ray">{{ __('Dashboard/login_trans.Ray') }}</option>
+
                                             </select>
                                         </div>
 
@@ -107,6 +109,23 @@
                                                 <button class="btn btn-main-primary btn-block" type="submit">{{ __('Dashboard/login_trans.Sign_in') }}</button>
                                             </form>
                                         </div>
+
+                                             <!-- Doctor Login -->
+                                             <div class="loginform" id="ray_employee-login">
+                                                <h5 class="font-weight-semibold mb-4">{{ __('Dashboard/login_trans.Login_as_doctor') }}</h5>
+                                                <form method="POST" action="{{ route('login.ray_employee') }}">
+                                                    @csrf
+                                                    <div class="form-group">
+                                                        <label>{{ __('Dashboard/login_trans.Ray') }}</label>
+                                                        <input class="form-control" placeholder="{{ __('Dashboard/login_trans.Ray') }}" type="text" name="email" required autofocus>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label>{{ __('Dashboard/login_trans.Password') }}</label>
+                                                        <input class="form-control" placeholder="{{ __('Dashboard/login_trans.Enter_password') }}" type="password" name="password" required>
+                                                    </div>
+                                                    <button class="btn btn-main-primary btn-block" type="submit">{{ __('Dashboard/login_trans.Sign_in') }}</button>
+                                                </form>
+                                            </div>
                                     </div> 
                                 </div> 
                             </div>
@@ -134,8 +153,9 @@ $(document).ready(function() {
             $("#admin-login").show(); 
         } else if (selectedValue === "doctor") {
             $("#doctor-login").show(); 
-        }
-    });
+        } else if (selectedValue === "ray") {
+            $("#ray_employee-login").show(); 
+ } });
 });
 </script>
 @endsection

@@ -266,6 +266,11 @@
 										@csrf
 										<button type="submit" class="dropdown-item"><i class="bx bx-log-out"></i> Sign Out</button>
 									</form>
+									@elseif(auth('ray_employee')->check())
+									<form method="POST" action="{{ route('logout.ray_employee') }}">
+										@csrf
+										<button type="submit" class="dropdown-item"><i class="bx bx-log-out"></i> Sign Out</button>
+									</form>
 										
 									@endif
 						

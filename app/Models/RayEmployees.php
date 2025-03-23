@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable; // ✅ Correct import
 
-class RayEmployees extends Model
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class RayEmployees extends Authenticatable
 {
     use HasFactory;
 

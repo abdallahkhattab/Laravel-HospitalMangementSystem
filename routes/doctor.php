@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard_Doctor\RaysController;
 use App\Http\Controllers\Dashboard_Doctor\InvoiceController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Dashboard_Doctor\DiagnosticController;
 use App\Http\Controllers\Dashboard_doctor\LaboratoriesController;
 use App\Http\Controllers\Dashboard_doctor\PatientDetailsController;

@@ -16,13 +16,14 @@ class RayEmployeeRepository implements RayEmployeesRepositoryInterface
 
     public function store($request)
     {
+        
         $data = $request->validated();
 
         if($request->has($data['password'])){
             $data['password'] = Hash::make($data['password']);
         }
         RayEmployees::create($data);
-        return redirect()->route('ray_employee.index')->with('success', 'Employee Added Successfully');
+        return redirect()->route('manage_ray_employee.index')->with('success', 'Employee Added Successfully');
   
     }
 
@@ -40,14 +41,14 @@ class RayEmployeeRepository implements RayEmployeesRepositoryInterface
             }
 
        $ray_employee->update($data);
-       return redirect()->route('ray_employee.index')->with('success', 'Employee Updated Successfully');
+       return redirect()->route('manage_ray_employee.index')->with('success', 'Employee Updated Successfully');
     }
 
     public function destroy($id)
     {
         $ray_employee = RayEmployees::findOrFail($id);
         $ray_employee->delete();
-        return redirect()->route('ray_employee.index')->with('success', 'Employee Deleted Successfully');
+        return redirect()->route('manage_ray_employee.index')->with('success', 'Employee Deleted Successfully');
 
     }
 

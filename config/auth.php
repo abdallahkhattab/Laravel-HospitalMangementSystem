@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Doctor;
+use App\Models\RayEmployees;
 
 return [
 
@@ -52,6 +53,11 @@ return [
             'driver' => 'session',
             'provider' => 'doctors',
         ],
+
+        'ray_employee' => [
+            'driver' => 'session',
+            'provider' => 'ray_employees',
+        ],
     ],
 
     /*
@@ -86,6 +92,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Doctor::class,
         ],
+
+        'ray_employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\RayEmployees::class,
+        ],
+
+
+
 
         // 'users' => [
         //     'driver' => 'database',

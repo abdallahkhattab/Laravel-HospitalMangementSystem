@@ -21,13 +21,23 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(
-                    $guard === 'admin' ? RouteServiceProvider::ADMIN :
-                    ($guard === 'doctor' ? RouteServiceProvider::DOCTOR : RouteServiceProvider::HOME)
-                );
+                return redirect($this->redirectTo($guard));
             }
         }
 
         return $next($request);
+    }
+
+    /**
+     * Determine the redirection path based on the authenticated guard.
+     */
+    private function redirectTo(?string $guard): string
+    {
+        return match ($guard) {
+            'admin' => RouteServiceProvider::ADMIN,
+            'doctor' => RouteServiceProvider::DOCTOR,
+            'ray_employee' => RouteServiceProvider::RAY_EMPLOYEE,
+            default => RouteServiceProvider::HOME,
+        };
     }
 }
