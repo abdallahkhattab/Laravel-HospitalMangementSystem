@@ -16,4 +16,10 @@ class Ray extends Model
     public function doctor(){
         return $this->belongsTo(Doctor::class,'doctor_id');
     }
+
+    public function employee()
+    {
+        return $this->belongsTo(RayEmployees::class,'employee_id')
+            ->withDefault(['name'=>'noEmployee']);
+    }
 }

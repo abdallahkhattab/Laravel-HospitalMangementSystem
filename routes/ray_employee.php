@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\Dashboard_Ray_Employees\InvoiceController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -34,6 +34,10 @@ Route::group(
 
 //---------------------------------------------------------------------------------------------------------------
 
+//################################## dashboard doctor invoice ########################################
+
+
+    Route::resource('Rayinvoices', InvoiceController::class)->middleware('auth:ray_employee');
 
     require __DIR__ . '/auth.php';
 

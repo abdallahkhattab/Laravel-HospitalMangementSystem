@@ -11,16 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rays', function (Blueprint $table) {
-            $table->id();
-            $table->longText('description');
-            $table->foreignId('invoice_id')->references('id')->on('single_invoices')->onDelete('cascade');
-            $table->foreignId('patient_id')->references('id')->on('patients')->onDelete('cascade');
-            $table->foreignId('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
+        Schema::table('rays', function (Blueprint $table) {
             $table->foreignId('employee_id')->nullable()->references('id')->on('ray_employees')->onDelete('cascade');
             $table->longText('description_employee')->nullable();
             $table->tinyInteger('case')->default(0);
-            $table->timestamps();
+
         });
     }
 
@@ -29,6 +24,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rays');
+        Schema::table('rays', function (Blueprint $table) {
+            $table->dropIfExists(['employee_id','description_employee','case']);
+        });
     }
 };
