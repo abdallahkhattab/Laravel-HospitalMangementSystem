@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
 {
+    
     protected $InvoiceRepository;
 
     public function __construct(InvoicesRepositoryInterface $InvoiceRepository)
@@ -50,7 +51,7 @@ class InvoiceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return $this->InvoiceRepository->edit($id);
     }
 
     /**
@@ -58,7 +59,7 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return $this->InvoiceRepository->update($request,$id);
     }
 
     /**

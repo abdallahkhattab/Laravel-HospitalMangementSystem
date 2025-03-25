@@ -36,8 +36,10 @@ Route::group(
 
 //################################## dashboard doctor invoice ########################################
 
+    Route::middleware(['auth:ray_employee'])->group(function(){
 
-    Route::resource('Rayinvoices', InvoiceController::class)->middleware('auth:ray_employee');
+    Route::resource('Rayinvoices', InvoiceController::class);
+    });
 
     require __DIR__ . '/auth.php';
 

@@ -10,7 +10,7 @@ class Ray extends Model
     use HasFactory;
     
     protected $fillable = [
-        'description','invoice_id','patient_id','doctor_id'
+        'description','invoice_id','patient_id','doctor_id','case','employee_id','employee_id','description_employee'
     ];
 
     public function doctor(){
@@ -22,4 +22,9 @@ class Ray extends Model
         return $this->belongsTo(RayEmployees::class,'employee_id')
             ->withDefault(['name'=>'noEmployee']);
     }
+
+    public function Patient(){
+        return $this->belongsTo(Patient::class,'patient_id');
+    }
+
 }
