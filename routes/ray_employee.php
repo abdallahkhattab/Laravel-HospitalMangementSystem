@@ -39,6 +39,9 @@ Route::group(
     Route::middleware(['auth:ray_employee'])->group(function(){
 
     Route::resource('Rayinvoices', InvoiceController::class);
+   // Route::get('completed_invoices', [InvoiceController::class,'completed_invoices'])->name('completed_invoices');
+    Route::get('view_rays/{id}', [InvoiceController::class,'viewRays'])->name('view_rays');
+
     });
 
     require __DIR__ . '/auth.php';

@@ -54,7 +54,7 @@ class InvoiceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return $this->invoiceRepository->show($id);
     }
 
     /**

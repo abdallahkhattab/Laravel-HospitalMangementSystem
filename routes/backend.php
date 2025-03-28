@@ -66,6 +66,11 @@ Route::group(
           Route::resource('manage_ray_employee', RayEmployeeController::class);
         });
 
+        //not found
+        Route::get('404',function(){
+            return view('Dashboard.404');
+        })->name('404');
+
         
 // ========================== End Admin Dashboard Routes ==========================
 

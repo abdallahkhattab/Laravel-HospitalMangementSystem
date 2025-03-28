@@ -43,10 +43,20 @@ class InvoiceRepository implements InvoicesRepositoryInterface
                 'case' => 1,
             ]);
     
+            /*
             // Upload image if present
-            if ($request->hasFile('photo')) {
+            if ($request->hasFile('photos')) {
                 $this->verifyAndStoreImage($request, 'photo', 'doctors', 'public', $user, Ray::class);
-            }
+            }*/
+
+            if( $request->hasFile( 'photos' ) ) {
+
+                foreach ($request->photos as $photo) {
+                    //Upload img
+                    $this->verifyAndStoreImageForeach($photo,'Rays','upload_image',$invoice->id,'App\Models\Ray');
+                }
+       
+              }
     
             return redirect()->route('Rayinvoices.index')->with('success', 'Invoice updated successfully.');
     
@@ -55,5 +65,12 @@ class InvoiceRepository implements InvoicesRepositoryInterface
     
             return redirect()->back()->with('error', 'Failed to update invoice: ' . $e->getMessage());
         }
+
+        
     }
-        }
+
+    public function view_rays($id)
+    {
+        
+    }
+}
