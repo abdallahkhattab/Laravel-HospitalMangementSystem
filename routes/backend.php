@@ -1,25 +1,27 @@
 <?php
 
-use App\Http\Controllers\Dashboard\Ambulances\AmbulanceController;
 use App\Models\Doctor;
 use Livewire\Livewire;
 use App\Livewire\Counter;
+use App\Models\RayEmployees;
+use App\Livewire\SingleInvoices;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\DashboardController;
-use App\Http\Controllers\Dashboard\Doctor\DoctorController;
-use App\Http\Controllers\Dashboard\Insurance\InsuranceController;
-use App\Http\Controllers\Dashboard\Patient\PatientsController;
 use App\Http\Controllers\Dashboard\Payment\PaymentAccount;
-use App\Http\Controllers\Dashboard\Payment\PaymentAccountController;
-use App\Http\Controllers\Dashboard\RayEmployeeController;
-use App\Http\Controllers\Dashboard\Receipt\ReceiptAccountController;
+use App\Http\Controllers\Dashboard\Doctor\DoctorController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Dashboard\Section\SectionController;
 use App\Http\Controllers\Dashboard\Service\ServiceController;
+use App\Http\Controllers\Dashboard\Patient\PatientsController;
+use App\Http\Controllers\Dashboard\Insurance\InsuranceController;
 use App\Http\Controllers\Dashboard_doctor\LaboratoriesController;
-use App\Livewire\SingleInvoices;
-use App\Models\RayEmployees;
+use App\Http\Controllers\Dashboard\Ambulances\AmbulanceController;
+use App\Http\Controllers\Dashboard\Payment\PaymentAccountController;
+use App\Http\Controllers\Dashboard\Receipt\ReceiptAccountController;
+use App\Http\Controllers\Dashboard\RayEmployee\RayEmployeeController;
+use App\Http\Controllers\Dashboard_LaboratorieEmployee\LaboratorieEmployeeController;
+use App\Models\LaboratorieEmployee;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,13 +66,10 @@ Route::group(
           Route::resource('Receipt',ReceiptAccountController::class);
           Route::resource('Payment',PaymentAccountController::class);
           Route::resource('manage_ray_employee', RayEmployeeController::class);
+          Route::resource('manage_laboratorie_employee',LaboratorieEmployeeController::class);
         });
 
-        //not found
-        Route::get('404',function(){
-            return view('Dashboard.404');
-        })->name('404');
-
+     
         
 // ========================== End Admin Dashboard Routes ==========================
 

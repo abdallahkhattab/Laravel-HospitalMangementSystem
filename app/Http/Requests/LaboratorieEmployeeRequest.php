@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RayEmployees extends FormRequest
+class LaboratorieEmployeeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,7 +21,7 @@ class RayEmployees extends FormRequest
      */
     public function rules(): array
     {
-        $id = $this->route('manage_ray_employee'); // Get employee ID
+        $id = $this->route('manage_laboratorie_employee'); // Get employee ID
 
         return [
             'name' => 'required|string|max:255',
