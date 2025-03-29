@@ -37,7 +37,8 @@ class RedirectIfAuthenticated
             'admin' => RouteServiceProvider::ADMIN,
             'doctor' => RouteServiceProvider::DOCTOR,
             'ray_employee' => RouteServiceProvider::RAY_EMPLOYEE,
-            default => RouteServiceProvider::HOME,
+            'laboratorie_employee' => RouteServiceProvider::LABORATORIE_EMPLOYEE,
+           default => RouteServiceProvider::HOME,
         };
     }
 }

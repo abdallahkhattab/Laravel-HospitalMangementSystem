@@ -45,7 +45,7 @@
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{ App\Models\single_invoice::where('doctor_id',Auth()->user()->id->count() )}}</h4>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{ App\Models\single_invoice::where('doctor_id',(Auth::id()) )->count()}}</h4>
 										</div>
 								
 									</div>
@@ -63,7 +63,7 @@
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{ App\Models\single_invoice::where('doctor_id',Auth()->user()->id->where('invoice_status',1)->count() )}}</h4>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{ App\Models\single_invoice::where('doctor_id',Auth::id())->where('invoice_status',1)->count()}}</h4>
 										</div>
 									
 									</div>
@@ -81,7 +81,7 @@
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{ App\Models\single_invoice::where('doctor_id',Auth()->user()->id->where('invoice_status',3)->count() )}}</h4>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{ App\Models\single_invoice::where('doctor_id',Auth::id())->where('invoice_status',3)->count()}}</h4>
 										</div>
 										
 									</div>
@@ -99,7 +99,7 @@
 								<div class="pb-0 mt-0">
 									<div class="d-flex">
 										<div class="">
-											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{ App\Models\single_invoice::where('doctor_id',Auth()->user()->id->where('invoice_status',2)->count() )}}</h4>
+											<h4 class="tx-20 font-weight-bold mb-1 text-white">{{ App\Models\single_invoice::where('doctor_id',Auth()->user()->id)->where('invoice_status',2)->count() }}</h4>
 										</div>
 									
 									</div>

@@ -12,6 +12,8 @@ use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Auth\LaboratorieEmployee\LaboratorieEmployeeController;
+use App\Http\Controllers\Auth\LaboratorieEmployee\LaboratorieEmployeeLoginController;
 use App\Http\Controllers\Auth\RayEmployee\RayEmployeeController;
 
 Route::middleware('guest')->group(function () {
@@ -55,6 +57,14 @@ Route::post('logout/doctor',[DoctorController::class,'destroy'])->middleware('au
 Route::post('login/ray_employee',[RayEmployeeController::class,'store'])->middleware('guest')->name('login.ray_employee');
 Route::post('logout/ray_employee',[RayEmployeeController::class,'destroy'])->middleware('auth:ray_employee')->name('logout.ray_employee');
 
+    //################################################ Laboratorie Employee Auth #########################//
+
+    Route::post('login/laboratorie_employee',[LaboratorieEmployeeLoginController::class,'store'])->middleware('guest')->name('login.laboratorie_employee');
+    Route::post('logout/laboratorie_employee',[LaboratorieEmployeeLoginController::class,'destroy'])->middleware('auth:laboratorie_employee')->name('logout.laboratorie_employee');
+
+    //################################################ Laboratorie Employee Auth #########################//
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', EmailVerificationPromptController::class)
@@ -74,6 +84,7 @@ Route::middleware('auth')->group(function () {
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
-
    
 });
+
+

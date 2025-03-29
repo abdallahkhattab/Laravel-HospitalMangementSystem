@@ -15,12 +15,19 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->delete();
+      //  DB::table('users')->delete();
+      /*
         DB::table('users')->insert([
             'name' => 'user',
             'email' =>'user@gmail.com',
             'password' => Hash::make('password'),
 
+        ]);*/
+
+        DB::table('laboratorie_employees')->insert([
+            'name'=> 'laboratorie',
+            'email'=> 'laboratorie@gmail.com',
+            'password'=> Hash::make('password'),
         ]);
     }
 }

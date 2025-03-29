@@ -10,11 +10,7 @@ class LaboratorieEmployee  extends Authenticatable
 {
     use HasFactory;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'email_verified_at',
-        'password',
-    ];
+    protected $guarded = [];
+
      
 }
