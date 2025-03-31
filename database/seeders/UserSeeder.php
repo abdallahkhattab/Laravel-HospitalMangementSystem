@@ -24,10 +24,21 @@ class UserSeeder extends Seeder
 
         ]);*/
 
+        /*
         DB::table('laboratorie_employees')->insert([
             'name'=> 'laboratorie',
             'email'=> 'laboratorie@gmail.com',
             'password'=> Hash::make('password'),
+        ]);*/
+
+        DB::table('patients')->insert([
+            'email'=> 'patient1@gmail.com',
+            'Date_Birth'=>'2025-03-03',
+            'phone'=>'01234567893',
+            'address'=>'new york',
+            'Blood_Group'=>'o+',
+            'Gender'=>'male',
+            'password'=> Hash::make('password1234'),
         ]);
     }
 }

@@ -38,6 +38,7 @@ class RedirectIfAuthenticated
             'doctor' => RouteServiceProvider::DOCTOR,
             'ray_employee' => RouteServiceProvider::RAY_EMPLOYEE,
             'laboratorie_employee' => RouteServiceProvider::LABORATORIE_EMPLOYEE,
+            'patient' => RouteServiceProvider::PATIENT,
            default => RouteServiceProvider::HOME,
         };
     }

@@ -32,6 +32,6 @@ class DatabaseSeeder extends Seeder
 
    //  $this->call(InsuranceCompanySeeder::class);
 
-      //$this->call(UserSeeder::class);
+      $this->call(UserSeeder::class);
     }
 }

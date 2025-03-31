@@ -14,6 +14,7 @@ use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\LaboratorieEmployee\LaboratorieEmployeeController;
 use App\Http\Controllers\Auth\LaboratorieEmployee\LaboratorieEmployeeLoginController;
+use App\Http\Controllers\Auth\patient\PatientLoginController;
 use App\Http\Controllers\Auth\RayEmployee\RayEmployeeController;
 
 Route::middleware('guest')->group(function () {
@@ -63,6 +64,15 @@ Route::post('logout/ray_employee',[RayEmployeeController::class,'destroy'])->mid
     Route::post('logout/laboratorie_employee',[LaboratorieEmployeeLoginController::class,'destroy'])->middleware('auth:laboratorie_employee')->name('logout.laboratorie_employee');
 
     //################################################ Laboratorie Employee Auth #########################//
+
+    
+    //################################################ start Patient  Auth #########################//
+
+    Route::post('login/patient',[PatientLoginController::class,'store'])->middleware('guest')->name('login.patient');
+    Route::post('logout/patient',[PatientLoginController::class,'destroy'])->middleware('auth:patient')->name('logout.patient');
+
+    //################################################ end Patient  Auth #########################//
+
 
 
 
