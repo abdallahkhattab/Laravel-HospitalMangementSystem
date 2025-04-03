@@ -41,4 +41,6 @@ class Patient extends Authenticatable implements TranslatableContract
     'Gender',
     'Blood_Group',
 ];
+
+
 }

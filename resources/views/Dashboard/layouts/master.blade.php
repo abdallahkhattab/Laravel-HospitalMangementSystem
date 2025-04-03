@@ -38,5 +38,20 @@
 			  
 			  
 			@livewireScripts	
+
+			<script>
+
+				// Enable pusher logging - don't include this in production
+				Pusher.logToConsole = true;
+			
+				var pusher = new Pusher('b13e47c3f6f233db1b7d', {
+				  cluster: 'eu'
+				});
+			
+				var channel = pusher.subscribe('my-channel');
+				channel.bind('my-event', function(data) {
+				  alert(JSON.stringify(data));
+				});
+			  </script>
 	</body>
 </html>

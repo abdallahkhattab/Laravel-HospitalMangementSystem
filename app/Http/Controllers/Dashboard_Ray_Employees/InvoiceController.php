@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class InvoiceController extends Controller
 {
     
+    
     protected $InvoiceRepository;
 
     public function __construct(InvoicesRepositoryInterface $InvoiceRepository)

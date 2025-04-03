@@ -1,15 +1,12 @@
 <?php
 
-namespace App\Interfaces\RayEmployee;
+namespace App\Interfaces\Lab;
 
-interface RayEmployeesRepositoryInterface
+
+interface RayEmployeesRepositoryInterface 
 {
     public function index();
-
     public function store($request);
-
     public function update($request,$id);
-
     public function destroy($id);
-
 }

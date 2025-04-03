@@ -2,9 +2,11 @@
 
 use App\Models\Doctor;
 use Livewire\Livewire;
+use App\Events\MyEvent;
 use App\Livewire\Counter;
 use App\Models\RayEmployees;
 use App\Livewire\SingleInvoices;
+use App\Models\LaboratorieEmployee;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\DashboardController;
@@ -21,7 +23,6 @@ use App\Http\Controllers\Dashboard\Payment\PaymentAccountController;
 use App\Http\Controllers\Dashboard\Receipt\ReceiptAccountController;
 use App\Http\Controllers\Dashboard\RayEmployee\RayEmployeeController;
 use App\Http\Controllers\Dashboard_LaboratorieEmployee\LaboratorieEmployeeController;
-use App\Models\LaboratorieEmployee;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ use App\Models\LaboratorieEmployee;
 
 // ========================== User Dashboard Routes ==========================
 Route::middleware(['auth', 'verified'])->group(function () {
+  //  event(new MyEvent('hello world'));
+
     Route::get('dashboard/user', fn() => view('Dashboard.User.dashboard'))
         ->name('dashboard.user');
 });
@@ -52,6 +55,7 @@ Route::group(
             return Route::post('/livewire/update', $handle);
         });
         Route::middleware('auth:admin')->prefix('dashboard')->group(function () {
+          //  event(new MyEvent('welcome admin'));
             Route::get('admin', [DashboardController::class, 'index'])
                 ->name('admin');
           Route::resource('section',SectionController::class);

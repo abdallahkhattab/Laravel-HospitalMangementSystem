@@ -77,9 +77,6 @@ Route::group(
 
             Route::resource('Laboratories', LaboratoriesController::class);
 
-
-
-
         });
 
            //not found

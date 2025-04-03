@@ -275,6 +275,12 @@
 										<button type="submit" class="dropdown-item"><i class="bx bx-log-out"></i> Sign Out</button>
 									</form>
 
+									@elseif (auth('patient')->check())
+									<form action="{{ route('logout.patient') }}" method="POST">
+										@csrf
+										<button type="submit" class="dropdown-item"><i class="bx bx-log-out"></i> Sign Out</button>
+									</form>
+
 									@endif
 
 							

@@ -51,7 +51,7 @@
                                                    <td>{{$loop->iteration}}</td>
                                                    <td>{{$laboratorie_employee->name}}</td>
                                                    <td>{{ $laboratorie_employee->email }}</td>
-                                                   <td>{{ $laboratorie_employee->created_at->diffForHumans() }}</td>
+                                                   <td>{{ $laboratorie_employee->created_at ? $laboratorie_employee->created_at->diffForHumans() : '' }}</td>
                                                    <td>
                                                        <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"  data-toggle="modal" href="#edit{{$laboratorie_employee->id}}"><i class="las la-pen"></i></a>
                                                        <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"  data-toggle="modal" href="#delete{{$laboratorie_employee->id}}"><i class="las la-trash"></i></a>

@@ -53,3 +53,26 @@
     <script src="{{URL::asset('Dashboard/js/table-data.js')}}"></script>
 
     <!--Internal  Notify js -->
+
+    
+    <script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
+    <script>
+  
+      // Enable pusher logging - don't include this in production
+      Pusher.logToConsole = true;
+  
+      var pusher = new Pusher('b13e47c3f6f233db1b7d', {
+        cluster: 'eu'
+      });
+  
+      var channel = pusher.subscribe('my-channel');
+      channel.bind('my-event', function(data) {
+        alert(JSON.stringify(data));
+      });
+
+      var channel = pusher.subscribe('my-channel');
+    channel.bind('App\\Events\\MyEvent', function(data) {
+      alert(JSON.stringify(data));
+    });
+    </script>
+  

@@ -191,7 +191,7 @@ $(document).ready(function() {
             $("#doctor-login").show(); 
         } else if (selectedValue === "ray") {
             $("#ray_employee-login").show(); 
-        } else if (selectedValue == "laboratorie") {
+        } else if (selectedValue === "laboratorie") {
             $("#laboratorie_employee-login").show();
         }
 });

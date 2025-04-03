@@ -26,7 +26,7 @@ class PatientLoginController extends Controller
     }
 
 
- 
+
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('patient')->logout();

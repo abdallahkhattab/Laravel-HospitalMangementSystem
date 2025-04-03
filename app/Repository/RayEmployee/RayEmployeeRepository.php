@@ -4,7 +4,7 @@ namespace App\Repository\RayEmployee;
 
 use App\Models\RayEmployees;
 use Illuminate\Support\Facades\Hash;
-use App\Interfaces\RayEmployee\RayEmployeesRepositoryInterface;
+use App\Interfaces\Lab\RayEmployeesRepositoryInterface;
 
 class RayEmployeeRepository implements RayEmployeesRepositoryInterface
 {

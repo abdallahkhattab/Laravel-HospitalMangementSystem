@@ -24,5 +24,9 @@
         @include('Dashboard.layouts.main-sidebar-laboratorie-employee')
     @endif
 
+    @if(\Auth::guard('patient')->check())
+    @include('Dashboard.layouts.main-sidebar-patient')
+    @endif
+
 </aside>
 <!-- main-sidebar -->
