@@ -8,26 +8,24 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class MyEvent implements ShouldBroadcast
+class CreateInvoice implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $data;
-    public $patient_id;
-   
-    public $single_invoice_id;
-
+    public $patient;
+    public $invoice_id;
+    public $message;
+    public $created_at;
     public function __construct($data)
     {
-
-        $patient = Patient::find($data['patient_id']);
-        
-        $this->patient_id = $patient->name;
-        $this->single_invoice_id = $data['single_invoice_id'];
+        $patient = Patient::find($data['patient']);
+        $this->patient = $patient;
+        $this->invoice_id = $data['invoice_id'];
+        $this->message = "new invoice";
+        $this->created_at = date('Y-M-D H:i:s');
     }
 
     /**
@@ -38,8 +36,8 @@ class MyEvent implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-          //  new PrivateChannel('channel-name'),
-          'my-channel'
+           // new PrivateChannel('channel-name'),
+           'create-invoice'
         ];
     }
 }
