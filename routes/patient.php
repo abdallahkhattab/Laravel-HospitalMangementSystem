@@ -5,7 +5,8 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Dashboard_patient\PatientController;
 use App\Http\Controllers\Dashboard\Patient\PatientsController;
 use App\Http\Controllers\Dashboard_patient\PatientControlller;
-
+use App\Livewire\Chat\CreateChat;
+use App\Livewire\Chat\Main;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,14 @@ Route::middleware(['auth:patient'])->group(function () {
     Route::get('view_rays/{id}', [PatientController::class,'viewRays'])->name('rays.view');
     Route::get('payments', [PatientController::class,'payments'])->name('payments.patient');
     //############################# end patients route ######################################
+
+    
+    //############################# Chat route ##########################################
+    Route::get('list/doctors',CreateChat::class)->name('list.doctors');
+    Route::get('chat/doctors',Main::class)->name('chat.doctors');
+    //############################# end Chat route ######################################
+
+
 
 });
 

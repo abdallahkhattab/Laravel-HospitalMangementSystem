@@ -147,55 +147,60 @@
 									</div>
 								</div>
 							</div>
-							<div class="dropdown nav-item main-header-notification">
-								<a class="new nav-link" href="#">
-								<svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class=" pulse"></span></a>
-								<div class="dropdown-menu dropdown-notifications">
-									<div class="menu-header-content bg-primary text-right">
-										<div class="d-flex">
-											<h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">الاشعارات</h6>
-											<span
-												class="badge badge-pill badge-warning mr-auto my-auto float-left">Mark All Read</span>
-										</div>
-										<p data-count="{{App\Models\Notification::CountNotification(auth()->user()->name)->count()}}" class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 notif-count">{{App\Models\Notification::CountNotification(auth()->user()->name)->count()}}</p>
-									</div>
-									<div class="main-notification-list Notification-scroll">
-			
-										<div class="new_message">
-										<a class="d-flex p-3 border-bottom" href="#">
-											<div class="notifyimg bg-pink">
-												<i class="la la-file-alt text-white"></i>
-											</div>
-											<div class="mr-3">
-												<h4 class="notification-label mb-1"></h4>
-												<div class="notification-subtext"></div>
-											</div>
-											<div class="mr-auto">
-												<i class="las la-angle-left text-left text-muted"></i>
-											</div>
-										</a>
-										</div>
-			
-										@foreach(App\Models\Notification::where('username',auth()->user()->name)->where('reader_status',0)->get() as $notification )
-										<a class="d-flex p-3 border-bottom" href="#">
-											<div class="notifyimg bg-pink">
-												<i class="la la-file-alt text-white"></i>
-											</div>
-											<div class="mr-3">
-												<h5 class="notification-label mb-1">{{$notification->message}}</h5>
-												<div class="notification-subtext">{{$notification->created_at}}</div>
-											</div>
-											<div class="mr-auto">
-												<i class="las la-angle-left text-left text-muted"></i>
-											</div>
-										</a>
-										@endforeach
-									</div>
-									<div class="dropdown-footer">
-										<a href="">VIEW ALL</a>
-									</div>
-								</div>
-							</div>
+					<!-- Notification dropdown component -->
+<div class="dropdown nav-item main-header-notification">
+	<a class="new nav-link" href="#">
+	  <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
+		<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+		<path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+	  </svg>
+	  <span class="pulse"></span>
+	</a>
+	<div class="dropdown-menu dropdown-notifications">
+	  <div class="menu-header-content bg-primary text-right">
+		<div class="d-flex">
+		  <h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">الاشعارات</h6>
+		  <span class="badge badge-pill badge-warning mr-auto my-auto float-left">Mark All Read</span>
+		</div>
+		<p data-count="{{App\Models\Notification::CountNotification(auth()->user()->id)->count()}}" class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 notif-count">{{App\Models\Notification::CountNotification(auth()->user()->id)->count()}}</p>
+	  </div>
+	  <div class="main-notification-list Notification-scroll">
+		<div class="new_message">
+		  <a class="d-flex p-3 border-bottom" href="#">
+			<div class="notifyimg bg-pink">
+			  <i class="la la-file-alt text-white"></i>
+			</div>
+			<div class="mr-3">
+			  <h4 class="notification-label mb-1"></h4>
+			  <div class="notification-subtext"></div>
+			</div>
+			<div class="mr-auto">
+			  <i class="las la-angle-left text-left text-muted"></i>
+			</div>
+		  </a>
+		</div>
+		
+		@foreach(App\Models\Notification::where('user_id',auth()->user()->id)->where('reader_status',0)->get() as $notification)
+		<a class="d-flex p-3 border-bottom" href="#">
+		  <div class="notifyimg bg-pink">
+			<i class="la la-file-alt text-white"></i>
+		  </div>
+		  <div class="mr-3">
+			<h5 class="notification-label mb-1">{{$notification->message}}</h5>
+			<div class="notification-subtext">{{$notification->created_at}}</div>
+		  </div>
+		  <div class="mr-auto">
+			<i class="las la-angle-left text-left text-muted"></i>
+		  </div>
+		</a>
+		@endforeach
+	  </div>
+	  <div class="dropdown-footer">
+		<a href="">VIEW ALL</a>
+	  </div>
+	</div>
+  </div>
+  
 							<div class="nav-item full-screen fullscreen-button">
 								<a class="new nav-link full-screen-link" href="#">
 									<svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none"
@@ -265,40 +270,80 @@
 
 <!-- /main-header -->
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="//js.pusher.com/3.1/pusher.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+@vite('resources/js/app.js')
 
-
-<script src="https://js.pusher.com/8.4.0/pusher.min.js"></script>
 <script>
-   var notificationsWrapper   = $('.dropdown-notifications');
-    var notificationsCountElem = notificationsWrapper.find('p[data-count]');
-    var notificationsCount  = parseInt(notificationsCountElem.data('count'));
-
-    var notifications = notificationsWrapper.find('h4.notification-label');
-    var new_message = notificationsWrapper.find('.new_message');
-    new_message.hide();
-	
-
-    Pusher.logToConsole = true;
-
-	var pusher = new Pusher('b13e47c3f6f233db1b7d', {
-      cluster: 'eu'
-    });
-
-  
-    var channel = pusher.subscribe('create-invoice');
-    channel.bind('App\\Events\\CreateInvoice', function(data) {
-		var newNotificationHtml = `
-       <h4 class="notification-label mb-1">`+data.message+data.patient+`</h4>
-       <div class="notification-subtext">`+data.created_at+`</div>`;
-        new_message.show();
+  // Wait for document to be ready
+  $(document).ready(function() {
+    console.log('Document ready, setting up notifications');
+    
+    // Check if Echo exists after a slight delay to ensure app.js is loaded
+    setTimeout(function() {
+      if (typeof window.Echo !== 'undefined') {
+        setupNotifications();
+      } else {
+        console.error('Echo is not defined after timeout. Check app.js');
+      }
+    }, 1000);
+    
+    function setupNotifications() {
+      console.log('Setting up notification listeners');
+      var notificationsWrapper = $('.dropdown-notifications');
+      var notificationsCountElem = notificationsWrapper.find('p[data-count]');
+      var notificationsCount = parseInt(notificationsCountElem.data('count')) || 0;
+      var notifications = notificationsWrapper.find('.notification-label');
+      var new_message = notificationsWrapper.find('.new_message');
+      
+      console.log('Found DOM elements:', {
+        wrapper: notificationsWrapper.length > 0,
+        countElem: notificationsCountElem.length > 0,
+        count: notificationsCount,
+        notifications: notifications.length > 0,
+        new_message: new_message.length > 0
+      });
+      
+      // Hide the notification message container initially
+      new_message.hide();
+      
+      // Listen to the private channel with the correct user ID
+      const userId = {{ auth()->user()->id }};
+      console.log('Listening to channel: create-invoice.' + userId);
+      
+      Echo.private('create-invoice.' + userId).listen('.create-invoice', (data) => {
+        console.log('Notification received:', data);
+        
+        // Format patient data correctly
+        let patientName = '';
+        if (data.patient) {
+          if (typeof data.patient === 'object' && data.patient.name) {
+            patientName = data.patient.name;
+          } else if (typeof data.patient === 'string') {
+            patientName = data.patient;
+          }
+        }
+        
+        var newNotificationHtml = `
+          <h4 class="notification-label mb-1">${data.message} ${patientName}</h4>
+          <div class="notification-subtext">${data.created_at}</div>`;
+        
+        console.log('Updating notification HTML');
         notifications.html(newNotificationHtml);
+        new_message.show();
+        
+        // Update the notification count
         notificationsCount += 1;
         notificationsCountElem.attr('data-count', notificationsCount);
         notificationsWrapper.find('.notif-count').text(notificationsCount);
-        notificationsWrapper.show();
-    }); 
-
+        
+        // Add visual indication that a new notification arrived
+        $('.pulse').addClass('pulse-danger');
+        
+        // Play a notification sound if you have one
+        // var notificationSound = new Audio('/path/to/notification-sound.mp3');
+        // notificationSound.play();
+      });
+    }
+  });
 </script>

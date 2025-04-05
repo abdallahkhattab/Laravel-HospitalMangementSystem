@@ -120,10 +120,11 @@ class SingleInvoices extends Component
                     $data = [
                     'patient_id'=>$this->patient_id,
                     'single_invoice_id'=>$this->single_invoice_id,
+                    'doctor_id'=>$this->doctor_id,
                     ];
 
                     $notifications = new Notification();
-                    $notifications->username = $this->username;
+                    $notifications->user_id = $this->doctor_id;
                     $patient = Patient::find($this->patient_id);
                     $notifications->message = "كشف جديد : ".$patient->name;
                     $notifications->save();
@@ -166,18 +167,25 @@ class SingleInvoices extends Component
                     $this->show_table =true;
                     
                 }
-                DB::commit();
+               
 
-                $data = [
-                    'patient_id'=>$this->patient_id,
-                    'single_invoice_id'=>$this->single_invoice_id,
-                    ];
+               
 
                     $notifications = new Notification();
-                    $notifications->username = $this->username;
+                    $notifications->user_id = $this->doctor_id;                   
                     $patient = Patient::find($this->patient_id);
                     $notifications->message = "كشف جديد : ".$patient->name;
-                    $notifications->save();         }
+                    $notifications->save(); 
+                    
+                    $data = [
+                        'patient_id'=>$this->patient_id,
+                        'single_invoice_id'=>$this->singleinvoices->id,
+                        'doctor_id'=>$this->doctor_id,
+    
+                        ];
+                    event(new CreateInvoice($data));
+                    DB::commit();
+              }
 
             catch (\Exception $e) {
                 DB::rollback();
@@ -234,13 +242,17 @@ class SingleInvoices extends Component
                     $data = [
                         'patient_id'=>$this->patient_id,
                         'single_invoice_id'=>$this->single_invoice_id,
+                        'doctor_id'=>$this->doctor_id,
+
                         ];
 
                         $notifications = new Notification();
-                        $notifications->username = $this->username;
+                        $notifications->user_id = $this->doctor_id;                        
                         $patient = Patient::find($this->patient_id);
                         $notifications->message = "كشف جديد : ".$patient->name;
                         $notifications->save();
+
+                        event(new CreateInvoice($data));
 
                 }
 
@@ -279,10 +291,12 @@ class SingleInvoices extends Component
                 $data = [
                     'patient_id'=>$this->patient_id,
                     'single_invoice_id'=>$this->single_invoice_id,
+                    'doctor_id'=>$this->doctor_id,
+
                     ];
 
                     $notifications = new Notification();
-                    $notifications->username = $this->username;
+                    $notifications->user_id = $this->doctor_id;                  
                     $patient = Patient::find($this->patient_id);
                     $notifications->message = "كشف جديد : ".$patient->name;
                     $notifications->save();
