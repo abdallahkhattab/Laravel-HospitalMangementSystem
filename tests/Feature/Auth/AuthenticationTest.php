@@ -3,7 +3,6 @@
 namespace Tests\Feature\Auth;
 
 use App\Models\User;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -13,8 +12,8 @@ class AuthenticationTest extends TestCase
 
     public function test_login_screen_can_be_rendered(): void
     {
-        $response = $this->get('/login');
-
+        // Your route is /login/user not /login
+        $response = $this->get('/login/user');
         $response->assertStatus(200);
     }
 
@@ -22,13 +21,16 @@ class AuthenticationTest extends TestCase
     {
         $user = User::factory()->create();
 
+        // Your login POST is still /login
         $response = $this->post('/login', [
             'email' => $user->email,
             'password' => 'password',
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+
+        // Adjust redirect (change if your controller redirects somewhere else)
+        $response->assertRedirect('/dashboard'); 
     }
 
     public function test_users_can_not_authenticate_with_invalid_password(): void
@@ -50,6 +52,8 @@ class AuthenticationTest extends TestCase
         $response = $this->actingAs($user)->post('/logout');
 
         $this->assertGuest();
-        $response->assertRedirect('/');
+
+        // Your controller redirects to /login/user, not /
+        $response->assertRedirect('/login/user'); 
     }
 }
