@@ -30,7 +30,7 @@ class AuthenticationTest extends TestCase
         $this->assertAuthenticated();
 
         // Adjust redirect (change if your controller redirects somewhere else)
-        $response->assertRedirect('/dashboard'); 
+$response->assertRedirect('/dashboard/user');
     }
 
     public function test_users_can_not_authenticate_with_invalid_password(): void
