@@ -15,7 +15,7 @@ class CreateChat extends Component
 {
     public $user;
 
-    public $users;
+    
     public $auth_email;
 
     public function mount()

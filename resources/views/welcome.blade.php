@@ -27,7 +27,7 @@
 							<div class="image-column col-lg-6 col-md-12 col-sm-12">
 								<div class="inner-column">
 									<div class="image">
-										<img src="images/main-slider/3.jpg" alt="" />
+										<img src="{{asset('WebSite/images/beautiful-young-female-doctor-looking-camera-office.jpg')}}" alt="" />
 									</div>
 								</div>
 							</div>
@@ -56,7 +56,7 @@
 							<div class="image-column col-lg-6 col-md-12 col-sm-12">
 								<div class="inner-column">
 									<div class="image">
-										<img src="images/main-slider/3.jpg" alt="" />
+										<img src="{{asset('WebSite/images/main-slider/3.jpg')}}" alt="" />
 									</div>
 								</div>
 							</div>
@@ -85,7 +85,7 @@
 							<div class="image-column col-lg-6 col-md-12 col-sm-12">
 								<div class="inner-column">
 									<div class="image">
-										<img src="images/main-slider/3.jpg" alt="" />
+										<img src="{{asset('WebSite/images/main-slider/3.jpg')}}" alt="" />
 									</div>
 								</div>
 							</div>
@@ -126,7 +126,7 @@
 					<div class="image-column col-lg-5 col-md-12 col-sm-12">
 						<div class="inner-column wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
 							<div class="image">
-								<img src="images/resource/image-3.jpg" alt="" />
+								<img src="{{asset('WebSite/images/resource/image-3.jpg')}}" alt="" />
 							</div>
 						</div>
 					</div>
@@ -193,7 +193,7 @@
 
 	<!-- Department Section Three -->
 	<section class="department-section-three">
-		<div class="image-layer" style="background-image:url(images/background/6.jpg)"></div>
+		<div class="image-layer" style="background-image:url({{asset('WebSite/images/background/6.jpg')}})"></div>
 		<div class="auto-container">
 			<!-- Department Tabs -->
 			<div class="department-tabs tabs-box">
@@ -357,7 +357,7 @@
 				<div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
 					<div class="inner-box wow fadeInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
 						<div class="image">
-							<img src="images/resource/team-1.jpg" alt="" />
+							<img src="{{asset('WebSite/images/d4.jpg')}}" alt="" />
 							<div class="overlay-box">
 								<ul class="social-icons">
 									<li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
@@ -380,7 +380,7 @@
 				<div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
 					<div class="inner-box wow fadeInLeft" data-wow-delay="250ms" data-wow-duration="1500ms">
 						<div class="image">
-							<img src="images/resource/team-2.jpg" alt="" />
+							<img src="{{asset('WebSite/images/d3.jpg')}}" alt="" />
 							<div class="overlay-box">
 								<ul class="social-icons">
 									<li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
@@ -403,7 +403,7 @@
 				<div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
 					<div class="inner-box wow fadeInLeft" data-wow-delay="500ms" data-wow-duration="1500ms">
 						<div class="image">
-							<img src="images/resource/team-3.jpg" alt="" />
+							<img src="{{asset('WebSite/images/d5.jpg')}}" alt="" />
 							<div class="overlay-box">
 								<ul class="social-icons">
 									<li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
@@ -426,7 +426,7 @@
 				<div class="team-block col-lg-3 col-md-6 col-sm-6 col-xs-12">
 					<div class="inner-box wow fadeInLeft" data-wow-delay="750ms" data-wow-duration="1500ms">
 						<div class="image">
-							<img src="images/resource/team-4.jpg" alt="" />
+							<img src="{{asset('WebSite/images/d2.jpg')}}" alt="" />
 							<div class="overlay-box">
 								<ul class="social-icons">
 									<li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
@@ -451,7 +451,7 @@
 	<!-- End Team Section -->
 
 	<!-- Video Section -->
-	<section class="video-section" style="background-image:url(images/background/5.jpg)">
+	<section class="video-section" style="background-image:url({{asset('WebSite/images/background/5.jpg')}})">
 		<div class="auto-container">
 			<div class="content">
 				<a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-box"><span class="flaticon-play-button"><i class="ripple"></i></span></a>
@@ -472,7 +472,7 @@
 					<div class="image-column col-lg-6 col-md-12 col-sm-12">
 						<div class="inner-column wow slideInLeft" data-wow-delay="0ms" data-wow-duration="1500ms">
 							<div class="image">
-								<img src="images/resource/doctor-2.png" alt="" />
+								<img src="{{asset('WebSite/images/doctor-presenting-something-isolated-white-background.jpg')}}" alt="" />
 							</div>
 						</div>
 					</div>
@@ -512,7 +512,7 @@
 				<div class="testimonial-block-two">
 					<div class="inner-box">
 						<div class="image">
-							<img src="images/resource/author-4.jpg" alt="" />
+							<img src="{{asset('WebSite/images/face.jpg')}}" alt="" />
 						</div>
 						<div class="text">Medical Centre is a great place to get all of your medical needs. I came in for a check up and did not wait more than 5 minutes before I was seen. I can only imagine the type of service you get for more serious issues. Thanks!</div>
 						<div class="lower-box">
@@ -535,7 +535,7 @@
 				<div class="testimonial-block-two">
 					<div class="inner-box">
 						<div class="image">
-							<img src="images/resource/author-5.jpg" alt="" />
+							<img src="{{asset('WebSite/images/face.jpg')}}" alt="" />
 						</div>
 						<div class="text">Medical Centre is a great place to get all of your medical needs. I came in for a check up and did not wait more than 5 minutes before I was seen. I can only imagine the type of service you get for more serious issues. Thanks!</div>
 						<div class="lower-box">
@@ -558,7 +558,7 @@
 				<div class="testimonial-block-two">
 					<div class="inner-box">
 						<div class="image">
-							<img src="images/resource/author-4.jpg" alt="" />
+							<img src="{{asset('WebSite/images/face.jpg')}}" alt="" />
 						</div>
 						<div class="text">Medical Centre is a great place to get all of your medical needs. I came in for a check up and did not wait more than 5 minutes before I was seen. I can only imagine the type of service you get for more serious issues. Thanks!</div>
 						<div class="lower-box">
@@ -581,7 +581,7 @@
 				<div class="testimonial-block-two">
 					<div class="inner-box">
 						<div class="image">
-							<img src="images/resource/author-5.jpg" alt="" />
+							<img src="{{asset('WebSite/images/face.jpg')}}" alt="" />
 						</div>
 						<div class="text">Medical Centre is a great place to get all of your medical needs. I came in for a check up and did not wait more than 5 minutes before I was seen. I can only imagine the type of service you get for more serious issues. Thanks!</div>
 						<div class="lower-box">
@@ -606,7 +606,7 @@
 	<!-- End Testimonial Section Two -->
 
 	<!-- Counter Section -->
-	<section class="counter-section style-two" style="background-image: url(images/background/pattern-3.png)">
+	<section class="counter-section style-two" style="background-image: url({{asset('WebSite/images/background/pattern-3.png')}})">
 		<div class="auto-container">
 			<!-- Fact Counter -->
 			<div class="fact-counter style-two">
@@ -728,7 +728,7 @@
 				<div class="news-block-two col-lg-6 col-md-12 col-sm-12">
 					<div class="inner-box">
 						<div class="image">
-							<a href="blog-detail.html"><img src="images/resource/news-4.jpg" alt="" /></a>
+							<a href="blog-detail.html"><img src="{{asset('WebSite/images/premium_photo-1661685745163-eddd0d1da80d.jpg')}}" alt="" /></a>
 						</div>
 						<div class="lower-content">
 							<div class="content">
@@ -752,7 +752,7 @@
 				<div class="news-block-two col-lg-6 col-md-12 col-sm-12">
 					<div class="inner-box">
 						<div class="image">
-							<a href="blog-detail.html"><img src="images/resource/news-5.jpg" alt="" /></a>
+							<a href="blog-detail.html"><img src="{{asset('WebSite/images/Heart-Center.jpg')}}" alt="" /></a>
 						</div>
 						<div class="lower-content">
 							<div class="content">
@@ -782,13 +782,13 @@
 			<div class="sponsors-outer">
 				<!-- Sponsors Carousel -->
 				<ul class="sponsors-carousel owl-carousel owl-theme">
-					<li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure></li>
-					<li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure></li>
-					<li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/3.png" alt=""></a></figure></li>
-					<li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/4.png" alt=""></a></figure></li>
-					<li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/5.png" alt=""></a></figure></li>
-					<li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/1.png" alt=""></a></figure></li>
-					<li class="slide-item"><figure class="image-box"><a href="#"><img src="images/clients/2.png" alt=""></a></figure></li>
+					<li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('WebSite/images/clients/1.png')}}" alt=""></a></figure></li>
+					<li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('WebSite/images/clients/2.png')}}" alt=""></a></figure></li>
+					<li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('WebSite/images/clients/3.png')}}" alt=""></a></figure></li>
+					<li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('WebSite/images/clients/4.png')}}" alt=""></a></figure></li>
+					<li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('WebSite/images/clients/5.png')}}" alt=""></a></figure></li>
+					<li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('WebSite/images/clients/1.png')}}" alt=""></a></figure></li>
+					<li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('WebSite/images/clients/2.png')}}" alt=""></a></figure></li>
 				</ul>
 			</div>
 		</div>

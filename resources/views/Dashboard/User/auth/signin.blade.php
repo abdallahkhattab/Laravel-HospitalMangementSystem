@@ -54,10 +54,9 @@
                                                 <option value="patient">{{ __('Dashboard/login_trans.Patient') }}</option>
                                                 <option value="admin">{{ __('Dashboard/login_trans.Admin') }}</option>
                                                 <option value="doctor">{{ __('Dashboard/login_trans.Doctor') }}</option>
-                                                <option value="ray">{{ __('Dashboard/login_trans.Ray') }}</option>
-                                                <option value="laboratorie">{{ __('Dashboard/login_trans.laboratorie') }}</option>
-                                                <option value="laboratorie">{{ __('Dashboard/login_trans.laboratorie') }}</option>
-
+                                                <option value="ray">XRay Employee</option>
+                                                <option value="laboratorie">laboratorie Employee</option>
+                                                
 
                                                 
                                             </select>
