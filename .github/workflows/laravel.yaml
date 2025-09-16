@@ -2,9 +2,9 @@ name: Laravel CI
 
 on:
   push:
-    branches: [ "main" ] # change branch if needed
+    branches: [ "master" ] # change branch if needed
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   laravel-tests:
