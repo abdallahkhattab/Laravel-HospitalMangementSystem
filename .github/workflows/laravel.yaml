@@ -44,11 +44,13 @@ jobs:
       - name: Install dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
 
-      - name: Copy .env
-        run: cp .env.example .env
-
-      - name: Generate application key
-        run: php artisan key:generate
+      - name: Prepare .env
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+          sed -i 's/DB_DATABASE=.*/DB_DATABASE=laravel/' .env
+          sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' .env
+          sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=root/' .env
 
       - name: Run migrations
         run: php artisan migrate --force
